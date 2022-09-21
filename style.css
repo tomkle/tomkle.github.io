@@ -9,7 +9,9 @@ body {
 
 @media only screen and (max-width: 600px) {
   body {
+    width: auto;
     margin: 0px 10% 25px;
+    background-color: #f1f1f1;
   }
 }
 
