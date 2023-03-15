@@ -1,1 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Blue Billywig WCAG Assessment</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <script type="text/javascript">
+        class TranscriptParser {
+            div = null;
+            api = null;
+            subtitleLines = null;
+            constructor(api, div) {
+                this.div = div;
+                this.api = api;
+                this.init();
+            }
+	        init() {
+	            this.api.on('subtitlechange', () => {
+	                this.onSubtitleChange(this.api.getCurrentSubtitle());
+	            });
+	            this.api.on('subtitlelinechange', () => {
+	                this.onSubtitleLineChange(this.api.getCurrentSubtitleLine());
+	            });
+	            this.api.on('started', () => {
+	                this.onSubtitleChange(this.api.getCurrentSubtitle());
+	            });
+	            setTimeout(() => {
+	                if (!this.subtitleLines) {
+	                    this.onSubtitleChange(this.api.getCurrentSubtitle());
+	                }
+	            }, 500);
+	            setTimeout(() => {
+	                if (!this.subtitleLines) {
+	                    this.onSubtitleChange(this.api.getCurrentSubtitle());
+	                }
+	            }, 2500);
+	            if (this.div) {
+	                this.div.addEventListener('mouseenter', () => {
+	                    this.onMouseEnter();
+	                });
+	                this.div.addEventListener('mouseleave', () => {
+	                    this.onMouseLeave();
+	                });
+	            }
+	        }
+	        onMouseEnter() {
+	            this.mouseIsOver = true;
+	        }
+	        onMouseLeave() {
+	            this.mouseIsOver = false;
+	        }
+	        onSubtitleChange(subtitle) {
+	            if (!subtitle || !subtitle.parsedData) return;
+	            let td = this.div;
+	            td.innerHTML = '';
+	            this.subtitleLines = subtitle.parsedData;
+	            this.subtitleLines.forEach((sub) => {
+	                let subLineDiv = document.createElement('div');
+	                subLineDiv.title = this.formatTime(sub.inPoint) + ' - ' + this.formatTime(sub.outPoint);
+	                subLineDiv.classList.add('sub-line');
+	                subLineDiv.innerHTML = sub.subtitleLine;
+	                subLineDiv.onclick = () => {
+	                    if (!this.api.isPlaying()) {
+	                        this.api.play();
+	                    }
+	                    this.api.seek(sub.inPoint);
+	                };
+	                td.appendChild(subLineDiv);
+	            });
+	        }
+	        onSubtitleLineChange(subtitleLine) {
+	            let currentTime = this.api.getCurrentTime();
+	            let activeElement = null;
+	            this.subtitleLines.forEach((line, i) => {
+	                let lineElement = this.div.childNodes[i];
+	                if (line.inPoint < currentTime && line.outPoint > currentTime) {
+	                    lineElement.classList.add('active');
+	                    activeElement = lineElement;
+	                } else {
+	                    lineElement.classList.remove('active');
+	                }
+	            });
+	            if (!this.mouseIsOver && activeElement) {
+	                activeElement.scrollIntoView({
+	                    block: 'center',
+	                    behavior: 'smooth'
+	                });
+	            }
+	        }
+	        formatTime(s) {
+	            return new Date(s * 1000).toISOString().substr(14, 5);
+	        }
+	    }        
+	    window.onPlayerLoaded = (api) => {
+	        const tp = new TranscriptParser(api, document.querySelector('.transcript'));
+	    }
+	</script>
+
+  </head>
+  <body>
+
+  	<div class="col-wrapper">
+    <div class="player-wrapper">
+            <script type="text/javascript" src="https://accessibility.bbvms.com/p/wcag_audit/c/5458315.js?callback=onPlayerLoaded"  async="true"></script>
+    </div>
+     <div class="transcript-wrapper hidden">
+            <div class="ar16-9">
+            <div class="transcript-outer">
+                <div class="transcript"></div>
+            </div>
+            </div>
+        </div>
+	</div>
+
+   	
+
+    <script src="script.js"></script>
+  </body>
+</html>
 

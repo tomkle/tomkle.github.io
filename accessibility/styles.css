@@ -1,0 +1,54 @@
+
+        .col-wrapper {
+            display: grid;
+            grid-gap: 20px;
+            grid-template-columns: 1fr 1fr;
+        }
+        .transcript-wrapper {
+            opacity: 1;
+            transition: opacity 0.25s;
+            text-align: left;
+            overflow: hidden;
+        }
+        .transcript-wrapper.hidden {
+            opacity: 0;
+            pointer-events: none;
+            display: none;
+        }
+        .ar16-9 {
+            overflow: hidden;
+            position: relative;
+            padding-top: 56.25%;
+            background-color: white;
+        }
+        .transcript {
+            padding: 10px;
+        } 
+        .transcript-outer {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+        }
+        .sub-line {
+            font-family: helvetica;
+            line-height: 1.5;
+            color: #444444;
+            cursor: pointer;
+            display: inline-block;
+            padding: 1px 2px;
+        }
+        .sub-line:hover,
+        .sub-line.active {
+            font-weight: 500;
+            color: #DF681C;
+        }
+        @media (max-width: 968px) {
+            .col-wrapper {
+                grid-template-columns: 1fr;
+                    }
+            }
