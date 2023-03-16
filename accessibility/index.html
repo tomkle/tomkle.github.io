@@ -116,6 +116,10 @@
 	                subLineDiv.title = this.formatTime(sub.inPoint) + ' - ' + this.formatTime(sub.outPoint);
 	                subLineDiv.classList.add('sub-line');
 	                subLineDiv.innerHTML = sub.subtitleLine;
+			const brElements = subLineDiv.querySelectorAll('br');
+			brElements.forEach((el) => {
+				el.parentNode.removeChild(el);
+			});
 	                subLineDiv.onclick = () => {
 	                    if (!this.api.isPlaying()) {
 	                        this.api.play();
