@@ -17,3 +17,8 @@ function topFunction() {
   document.body.scrollTop = 0; // For Safari
   document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }
+
+// Rezise the viewport
+function resize(value) {
+  document.body.style.width = value + "px";
+}
