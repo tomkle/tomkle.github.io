@@ -20,5 +20,10 @@ function topFunction() {
 
 // Rezise the viewport
 function resize(value) {
+
+  if(value == "768") {
+    //too lazy to fix for real..
+    value = "767";
+  }
   document.body.style.width = value + "px";
 }
