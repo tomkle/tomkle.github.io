@@ -54,13 +54,22 @@
         .sub-line.active {
             font-weight: 500;
             color: white;
-	    background-color: blue;
+	    background-color: rgb(53, 120, 187);
         }
         @media (max-width: 968px) {
             .col-wrapper {
                 grid-template-columns: 1fr;
                     }
             }
+	button {
+		text-align: left;
+		background: none;
+		color: inherit;
+		border: none;
+		padding: 0;
+		font: inherit;
+		cursor: pointer;
+	}
     </style>
 
     <script type="text/javascript">
@@ -114,7 +123,7 @@
 	            td.innerHTML = '';
 	            this.subtitleLines = subtitle.parsedData;
 	            this.subtitleLines.forEach((sub) => {
-	                let subLineDiv = document.createElement('div');
+	                let subLineDiv = document.createElement('button');
 	                subLineDiv.title = this.formatTime(sub.inPoint) + ' - ' + this.formatTime(sub.outPoint);
 	                subLineDiv.classList.add('sub-line');
 	                subLineDiv.innerHTML = sub.subtitleLine;
