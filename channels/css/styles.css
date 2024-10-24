@@ -72,4 +72,14 @@ li a {
 	text-decoration: none;
 	color: #F4F7FA;
 
-}	
+}
+
+	li a:hover {
+		color: #AEC9E4;
+		font-weight: 500;
+	}
+
+	li a.active {
+		color: #72A1CF;
+		font-weight: 700;
+	}	
