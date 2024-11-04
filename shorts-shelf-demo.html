@@ -55,6 +55,9 @@
   <body>
 
     <div style="width: 800px; margin: 0px auto;">
+      <div style="margin: 25px 0">
+        <a onclick="removeStorage()" class="button">Both options</a>
+      </div>
 
       <h1>Grote storing op Eindhoven Airport, geen vliegverkeer mogelijk</h1>
 
@@ -87,6 +90,13 @@
       <p>Een vrouw vertelt dat zij sinds halfzes woensdagochtend in de inkomhal zit. "Ik zou naar Lissabon vliegen en donderdag teruggaan. Ik belde net het reisbureau voor meer informatie. Daar zeggen ze te zien dat ik sinds kwart voor acht kan boarden, maar dat is niet het geval. En ik hoor hier niks..."</p>
 
     </div>
+
+    <script>
+      function removeStorage() {
+        localStorage.removeItem('bb_play_history')
+        alert ("Removed storage");
+      }
+    </script>
 
   </body>
 </html>
