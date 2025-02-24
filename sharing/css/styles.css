@@ -1,12 +1,12 @@
 
 
 .content {
-  width: 900px;
+  max-width: 900px;
   margin: 50px auto;
 }
 
 .content-channel {
-  width: 1300px;
+  max-width: 1300px;
   margin: 50px auto;
 }
 
