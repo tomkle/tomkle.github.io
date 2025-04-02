@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Screen Reader Announcement POC</title>
+  <style>
+    #focusableDiv {
+      width: 200px;
+      height: 100px;
+      border: 1px solid black;
+      margin: 20px;
+      padding: 10px;
+      outline: none; /* Important for custom focus styles */
+    }
+
+    #announcementArea {
+      position: absolute;
+      left: -9999px; /* Hide off-screen */
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+
+    #focusableDiv:focus {
+      border: 2px solid blue; /* Visual focus indicator */
+    }
+  </style>
+</head>
+<body>
+
+  <div id="focusableDiv" tabindex="0">
+    Focus this div to hear an announcement.
+  </div>
+
+  <div id="announcementArea" aria-live="polite" aria-atomic="true"></div>
+
+  <script>
+    function screenReaderAnnounce(message) {
+      const announcementArea = document.getElementById('announcementArea');
+      announcementArea.textContent = message;
+    }
+
+    const focusableDiv = document.getElementById('focusableDiv');
+
+    focusableDiv.addEventListener('focus', () => {
+      screenReaderAnnounce('This div has received focus. You can interact with it using your keyboard.');
+    });
+  </script>
+
+</body>
+</html>
