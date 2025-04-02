@@ -30,7 +30,7 @@
 <body>
 
   <div id="focusableDiv" tabindex="0">
-    Focus this div to hear an announcement.
+    Blue Billywig player fake.
   </div>
 
   <div id="announcementArea" aria-live="polite" aria-atomic="true"></div>
@@ -48,7 +48,7 @@
     const focusableDiv = document.getElementById('focusableDiv');
 
     focusableDiv.addEventListener('focus', () => {
-      screenReaderAnnounce('This div has received focus. You can interact with it using your keyboard.');
+      screenReaderAnnounce('You have focus on the Blue Billywig videoplayer. You can control the player using keyboard shortkeys. An overview of these shortkeys can be found by pressing ? (Shift + /). You can also turn off shortkeys completely from this overview.');
     });
   </script>
 
