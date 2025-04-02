@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Screen Reader Announcement POC (VoiceOver Fix)</title>
+  <style>
+    #focusableDiv {
+      width: 200px;
+      height: 100px;
+      border: 1px solid black;
+      margin: 20px;
+      padding: 10px;
+      outline: none;
+    }
+
+    #announcementArea {
+      position: absolute;
+      left: -9999px;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      /* Crucial for VoiceOver */
+      opacity: 0;
+    }
+
+    #focusableDiv:focus {
+      border: 2px solid blue;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="focusableDiv" tabindex="0">
+    Focus this div to hear an announcement.
+  </div>
+
+  <div id="announcementArea" aria-live="polite" aria-atomic="true"></div>
+
+  <script>
+    function screenReaderAnnounce(message) {
+      const announcementArea = document.getElementById('announcementArea');
+      announcementArea.textContent = ''; // Clear previous content
+      // Delay before setting content to improve VoiceOver reliability
+      setTimeout(() => {
+        announcementArea.textContent = message;
+      }, 100); // Small delay
+    }
+
+    const focusableDiv = document.getElementById('focusableDiv');
+
+    focusableDiv.addEventListener('focus', () => {
+      screenReaderAnnounce('This div has received focus. You can interact with it using your keyboard.');
+    });
+  </script>
+
+</body>
+</html>
