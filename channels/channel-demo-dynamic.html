@@ -22,30 +22,33 @@
   <meta name="theme-color" content="#fafafa">
 
   <script>
-      const defaultChannelURL = "https://newskin.acc.bbvms.com/ch/143.js"; // Set your default URL
-      const newChannelURL = prompt("Please enter the URL for the channel script:", defaultChannelURL);
+    const defaultChannelURL = "https://newskin.acc.bbvms.com/ch/143.json"; // Example default .json URL
+    const rawChannelURL = prompt("Please enter the JSON URL for the channel data (should end with .json):", defaultChannelURL);
 
-      if (newChannelURL) {
-        // Create the new script element
-        const newScript = document.createElement('script');
-        newScript.type = 'text/javascript';
-        newScript.src = newChannelURL;
+    if (rawChannelURL) {
+      // Modify the URL to replace .json with .js
+      const newChannelURL = rawChannelURL.replace(/\.json$/, '.js');
 
-        // Wait for the DOM to be fully loaded before finding the target div
-        document.addEventListener('DOMContentLoaded', function() {
-          const channelDiv = document.getElementById('channel');
+      // Create the new script element
+      const newScript = document.createElement('script');
+      newScript.type = 'text/javascript';
+      newScript.src = newChannelURL;
 
-          if (channelDiv) {
-            channelDiv.appendChild(newScript);
-            console.log("New script element appended to the 'channel' div with URL:", newChannelURL);
-          } else {
-            console.error("Div with ID 'channel' not found.");
-          }
-        });
-      } else {
-        console.log("No URL provided, script not injected.");
-      }
-    </script>
+      // Wait for the DOM to be fully loaded before finding the target div
+      document.addEventListener('DOMContentLoaded', function() {
+        const channelDiv = document.getElementById('channel');
+
+        if (channelDiv) {
+          channelDiv.appendChild(newScript);
+          console.log("New script element appended to the 'channel' div with URL:", newChannelURL);
+        } else {
+          console.error("Div with ID 'channel' not found.");
+        }
+      });
+    } else {
+      console.log("No URL provided, script not injected.");
+    }
+  </script>
 </head>
 
 <body>
