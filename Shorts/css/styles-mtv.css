@@ -1,0 +1,134 @@
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body, html {
+    height: 100%;
+    background-color: #E8E9EA;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    /* min-height: 100vh; /* Full viewport height */
+}
+
+.navbar {
+    background-color: #0B1823; /* Example color for the navbar */
+    padding: 1rem;
+    height: 70px;
+}
+
+.navbar-container {
+    width: 1200px; /* Fixed width for the navbar */
+    margin: 0 auto; /* Center the navbar container */
+}
+
+.nav-list {
+    list-style-type: none; /* Remove bullet points */
+    display: flex; /* Use flexbox for horizontal layout */
+    justify-content: flex-start; /* Align items to the left */
+}
+
+.nav-list li {
+    margin-right: 40px; /* Spacing between items */
+}
+
+
+.content {
+    padding: 0rem;
+    background-color: #f1f1f1; /* Example color */
+    height: calc(100vh - 60px) !important;
+}
+
+.content-article {
+  width: 800px;
+  margin: 40px auto;
+}
+
+/* Fonts and stuff */
+li.logo {
+	font-family: "Impact", sans-serif;
+	font-weight: bold;
+	font-size: 28px;
+	margin-right: 75px;
+
+}
+	span.blue {
+		color: #72A1CF;
+	}
+
+	span.lightblue {
+		color: #AEC9E4;
+	}
+
+	span.white {
+		color: #F4F7FA;
+	}
+
+li a, li {
+	font-family: "Roboto", sans-serif;
+	font-weight: normal;
+	font-size: 18x;
+	line-height: 35px;
+	text-decoration: none;
+	color: #F4F7FA;
+
+}
+
+	li a:hover {
+		color: #AEC9E4;
+		font-weight: 500;
+	}
+
+	li a.active {
+		color: #72A1CF;
+		font-weight: 700;
+	}
+
+/* Article styling */
+.content-article h1{
+  font-family:  Ubuntu, sans-serif;
+  font-weight: 700;
+  line-height: 50px;
+  font-size: 30px
+}
+
+.content-article h2 {
+  font-family:  Ubuntu, sans-serif;
+  font-weight: 700;
+  line-height: 40px;
+}
+
+.content-article h3 {
+  font-family:  Ubuntu, sans-serif;
+  font-weight: 700;
+  line-height: 40px;
+}
+
+.content-article p {
+  font-family:  Ubuntu, sans-serif;
+  font-size: 18px;
+  line-height: 31px;
+  margin-bottom: 20px;
+}
+
+.content-article a.button {
+  font-family:  Ubuntu, sans-serif;
+  padding: 12px 20px;
+  background: #0B1823;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+  .content-article a.button:hover {
+    background: #2B4153;
+  }
+
+  .content-article a.active {
+    background: #00008B;
+  }
