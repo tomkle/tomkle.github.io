@@ -1,0 +1,80 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shorts fullscreen demo</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <meta name="description" content="">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+  <meta property="og:image:alt" content="">
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon.png">
+
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#fafafa">
+</head>
+
+<body>
+
+  <!-- Add your site or application content here -->
+  <div class="container">
+
+  <nav class="navbar">
+    <div class="navbar-container">
+        <ul class="nav-list">
+            <li class="logo"><span class="blue">BLUE</span><span class="lightblue">BILLY</span><span class="white">SHORTS</span></li>
+            <li><b>CTA</b></li>
+            <li><a href="shorts-full-demo-cta-tc.html">CTA Centered</a></li>
+            <li><a href="shorts-full-demo-cta-bl.html">CTA Bottom Left</a></li>
+            <li><b>Shelf</b></li>
+            <li><a href="shorts-shelf-demo-watched.html"  class="active">Watched</a></li>
+            <li><a href="shorts-shelf-demo-watched-move.html">Watched & move</a></li>
+        </ul>
+    </div>
+  </nav>
+
+    <section class="content-article">
+
+        <div style="margin-bottom: 20px">
+          <a onclick="removeStorage()" class="button">Clear watch history</a>
+        </div>
+
+
+        <h1>Shelves</h1>
+
+        <h3>Fixed (250)</h3>
+
+
+
+        <h3>Dynamic (175)</h3>
+
+        <div style="height: 275px;">
+          <script type="text/javascript" src="https://newskin.acc.bbvms.com/sh/68.js?displayFormat=list" ></script>
+        </div>
+
+        <p></p>
+
+
+    </section>
+
+  </div>
+
+  <script>
+    function removeStorage() {
+      localStorage.removeItem('bb_play_history')
+      alert ("Removed storage");
+      location.reload();
+    }
+  </script>
+
+</body>
+
+</html>
