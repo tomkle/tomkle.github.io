@@ -1,0 +1,21 @@
+/* style.css */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f0f4f8; /* Light blue-gray background */
+    display: flex; /* Use flexbox for layout */
+    min-height: 100vh; /* Ensure body takes full viewport height */
+    margin: 0;
+}
+
+aside {
+    position: fixed; /* Make the side menu sticky */
+    height: 100vh; /* Ensure it takes full viewport height */
+    top: 0; /* Align to the top */
+    left: 0; /* Align to the left */
+}
+
+main {
+    justify-content: flex-start; /* Make content stick to the top within the main area */
+    margin-left: 75px; /* Add margin to account for the fixed side menu width */
+    flex-grow: 1; /* Allow main content to grow and fill available space */
+}
