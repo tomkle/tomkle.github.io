@@ -1,0 +1,108 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body, html {
+    height: 100%;
+    background-color: #F4F7FA;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    /* min-height: 100vh; /* Full viewport height */
+}
+
+.navbar {
+    background-color: #1A3B5C; /* Example color for the navbar */
+    padding: 1rem;
+    height: 60px;
+}
+
+.navbar-container {
+    width: 1200px; /* Fixed width for the navbar */
+    margin: 0 auto; /* Center the navbar container */
+}
+
+.nav-list {
+    list-style-type: none; /* Remove bullet points */
+    display: flex; /* Use flexbox for horizontal layout */
+    justify-content: flex-start; /* Align items to the left */
+}
+
+.nav-list li {
+    margin-right: 40px; /* Spacing between items */
+}
+
+
+.content {
+    flex: 1; /* This allows the content section to grow */
+    padding: 0rem;
+    overflow: auto; /* Prevents overflow */
+}
+
+/* Fonts and stuff */
+li.logo {
+	font-family: "Impact", sans-serif;
+	font-weight: bold;
+	font-size: 28px;
+	margin-right: 75px;
+
+}
+	span.blue {
+		color: #72A1CF;
+	}
+
+	span.lightblue {
+		color: #AEC9E4;
+	}
+
+	span.white {
+		color: #F4F7FA;
+	}
+
+li a {
+	font-family: "Roboto", sans-serif;
+	font-weight: normal;
+	font-size: 18x;
+	line-height: 35px;
+	text-decoration: none;
+	color: #F4F7FA;
+
+}
+
+	li a:hover {
+		color: #AEC9E4;
+		font-weight: 500;
+	}
+
+	li a.active {
+		color: #72A1CF;
+		font-weight: 700;
+	}
+
+h1 {
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  font-size: 26x;
+  line-height: 25px;
+  margin-bottom: 15px;
+}
+
+h2 {
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  font-size: 22x;
+  line-height: 25px;
+  margin-bottom: 15px;
+}
+
+p {
+  font-family: "Roboto", sans-serif;
+  font-weight: normal;
+  font-size: 18x;
+  line-height: 25px;
+  margin-bottom: 15px;
+}
