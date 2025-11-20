@@ -21,6 +21,57 @@
   <link rel="manifest" href="site.webmanifest">
   <meta name="theme-color" content="#fafafa">
 
+  <style>
+    /* Basic navbar styles, can be enhanced and media-query responsive if desired */
+    nav.navbar {
+      width: 100%;
+      background-color: #222;
+      padding: 0.5rem 0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+      position: relative;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+    }
+
+    nav.navbar ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      align-items: center;
+    }
+
+    nav.navbar li {
+      display: inline-block;
+      margin: 0 1rem;
+    }
+
+    nav.navbar a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1rem;
+      padding: 0.5rem 0.8rem;
+      transition: background 0.2s, color 0.2s;
+      border-radius: 3px;
+    }
+
+    nav.navbar a:hover, nav.navbar a:focus {
+      background-color: #444;
+      color: #fafafa;
+    }
+
+    /* Add some margin so the content doesn't hide under the nav */
+    body {
+      margin: 0;
+    }
+    #channel {
+      margin-top: 1.5rem;
+      padding: 1rem;
+    }
+  </style>
+
   <script>
     const defaultChannelURL = "https://newskin.acc.bbvms.com/ch/143.json"; // Example default .json URL
     const rawChannelURL = prompt("Please enter the JSON URL for the channel data (should end with .json):", defaultChannelURL);
@@ -52,6 +103,12 @@
 </head>
 
 <body>
+
+  <nav class="navbar">
+    <ul>
+      <li><a href="channel-demo-dynamic.html">Home</a></li>
+    </ul>
+  </nav>
 
   <div id="channel">
     </div>
