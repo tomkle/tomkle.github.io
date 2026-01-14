@@ -5,21 +5,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>A11Y Audit 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <style>
+      :root {
+        --max-width: 1100px;
+        --accent: #1a73e8;
+        --bg: #fff;
+        --text: #222;
+      }
+      html,body {
+        height:100%;
+        background:var(--bg);
+      }
+      body{
+        font-family: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+        color:var(--text);
+        line-height:1.6;
+        -webkit-font-smoothing:antialiased;
+        -moz-osx-font-smoothing:grayscale;
+        margin:0;
+        padding:0;
+      }
+      .container{
+        max-width:var(--max-width);
+        width:100%;
+        margin:3rem auto;
+        padding:0 1.25rem;
+      }
+      h1{
+        font-family: "Merriweather", Georgia, serif;
+        font-weight:700;
+        font-size:2.25rem;
+        margin:0 0 1rem 0;
+      }
+      h2{
+        font-family: "Merriweather", Georgia, serif;
+        font-weight:700;
+        font-size:1.25rem;
+        margin-top:1.75rem;
+        margin-bottom:0.5rem;
+        color:var(--accent);
+      }
+      p{
+        margin:0 0 1rem 0;
+      }
+      /* make iframe/script area accessible/responsive */
+      .ad-placeholder{
+        background:#f7f7f7;
+        border:1px dashed #e0e0e0;
+        padding:1rem;
+        border-radius:6px;
+      }
+    </style>
   </head>
   <body>
-    <h1>Google Pixel Buds Pro</h1>
+    <main class="container">
+      <h1>Google Pixel Buds Pro</h1>
 
-    <p>The Google Pixel Buds Pro represent a significant milestone in Google's audio journey, successfully bridging the gap between sleek hardware and intelligent software. Positioned as a direct competitor to industry heavyweights, these earbuds prioritize a "silent and seamless" experience through advanced noise cancellation and deep integration with the Android ecosystem.</p>
-    
-    <h2>Active Noise Cancellation</h2>
-    <p>Google’s ANC uses "Silent Seal" technology to adapt to the unique shape of your ear canal. It excels at neutralizing low-frequency sounds like the hum of an airplane engine or city traffic. For times when you need to stay aware, the Transparency Mode processes a wide range of frequencies to make outside voices and ambient sounds feel natural rather than processed.</p>
-    
-    <h2>Google Pixel Buds Pro Review Just Get These!</h2>
-    <script type="text/javascript" src="https://bb.dev.bbvms.com/p/a11y_audit/c/1100342.js"  async="true"></script>
+      <p>The Google Pixel Buds Pro represent a significant milestone in Google's audio journey, successfully bridging the gap between sleek hardware and intelligent software. Positioned as a direct comp[...]</p>
+      
+      <h2>Active Noise Cancellation</h2>
+      <p>Google’s ANC uses "Silent Seal" technology to adapt to the unique shape of your ear canal. It excels at neutralizing low-frequency sounds like the hum of an airplane engine or city traffic. F[...]</p>
+      
+      <h2>Google Pixel Buds Pro Review Just Get These!</h2>
+      <div class="ad-placeholder" aria-hidden="true">
+        <script type="text/javascript" src="https://bb.dev.bbvms.com/p/a11y_audit/c/1100342.js" async></script>
+      </div>
 
-    <h2>Active Noise Cancellation</h2>
-    <p>Google’s ANC uses "Silent Seal" technology to adapt to the unique shape of your ear canal. It excels at neutralizing low-frequency sounds like the hum of an airplane engine or city traffic. For times when you need to stay aware, the Transparency Mode processes a wide range of frequencies to make outside voices and ambient sounds feel natural rather than processed.</p>
-
+      <h2>Active Noise Cancellation</h2>
+      <p>Google’s ANC uses "Silent Seal" technology to adapt to the unique shape of your ear canal. It excels at neutralizing low-frequency sounds like the hum of an airplane engine or city traffic. F[...]</p>
+    </main>
   </body>
 </html>
