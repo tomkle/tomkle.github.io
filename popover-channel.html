@@ -1,0 +1,130 @@
+<html>
+<head>
+    <title>Route 66: The Mother Road</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+        header {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        header h1 {
+            font-size: 3em;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        header p {
+            font-size: 1.3em;
+            margin: 10px 0 0 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #c0392b;
+            border-bottom: 3px solid #e74c3c;
+            padding-bottom: 10px;
+        }
+        .stop {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-left: 4px solid #e74c3c;
+        }
+        .stop strong {
+            color: #c0392b;
+        }
+        button {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: transform 0.2s;
+        }
+        button:hover {
+            transform: scale(1.05);
+        }
+        #randomStop {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #c0392b;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🛣️ Route 66</h1>
+        <p>The Mother Road: Chicago to Santa Monica</p>
+    </header>
+    <div class="container">
+        <h2>The Ultimate American Road Trip</h2>
+        <p>Route 66, also known as "The Mother Road," stretches 2,448 miles from Chicago, Illinois to Santa Monica, California. Established in 1926, it's one of the most iconic highways in America and remains a symbol of adventure and freedom.</p>
+        
+        <h2>Iconic Stops Along the Way</h2>
+        <div class="stop">
+            <strong>Chicago, Illinois</strong> - Start your journey at the famous Route 66 sign on Adams Street. Don't miss the Art Institute and Navy Pier.
+        </div>
+        <div class="stop">
+            <strong>St. Louis, Missouri</strong> - Stop by the Gateway Arch, a stunning monument to westward expansion. Visit the City Museum for quirky underground adventures.
+        </div>
+        <div class="stop">
+            <strong>Oklahoma City, Oklahoma</strong> - Explore the Route 66 Museum and grab authentic BBQ. The city has a rich automotive heritage.
+        </div>
+        <div class="stop">
+            <strong>Amarillo, Texas</strong> - Visit the famous Cadillac Ranch where visitors spray paint vintage cars. A true Route 66 experience!
+        </div>
+        <div class="stop">
+            <strong>Albuquerque, New Mexico</strong> - The longest stretch of the original Route 66 runs through this vibrant city. Explore Old Town and stunning desert landscapes.
+        </div>
+        <div class="stop">
+            <strong>Flagstaff, Arizona</strong> - Located near the Grand Canyon, Flagstaff offers cool mountain air and historic Route 66 landmarks.
+        </div>
+        <div class="stop">
+            <strong>Barstow, California</strong> - The gateway to California features the Route 66 Mother Road Museum with vintage memorabilia.
+        </div>
+        <div class="stop">
+            <strong>Santa Monica, California</strong> - End your journey at the Santa Monica Pier, where Route 66 meets the Pacific Ocean. A true American milestone!
+        </div>
+
+        <h2>Trip Tips</h2>
+        <p>Plan for at least 2-3 weeks to truly experience Route 66. Bring a camera, comfortable shoes, and an open mind. Stay in vintage motels, try local diners, and take the scenic routes. The journey is more important than the destination!</p>
+
+        <h2>Discover a Random Stop</h2>
+        <p>Click below to get a random Route 66 destination suggestion:</p>
+        <button onclick="getRandomStop()">Get Random Stop</button>
+        <p id="randomStop"></p>
+    </div>
+
+    <script>
+        const stops = [
+            'Chicago - The starting point',
+            'St. Louis - Gateway Arch',
+            'Oklahoma City - Route 66 Museum',
+            'Amarillo - Cadillac Ranch',
+            'Albuquerque - Desert vistas',
+            'Flagstaff - Near the Grand Canyon',
+            'Barstow - California gateway',
+            'Santa Monica - The finish line'
+        ];
+        function getRandomStop() {
+            const randomIndex = Math.floor(Math.random() * stops.length);
+            document.getElementById('randomStop').innerText = `Next stop: ${stops[randomIndex]}!`;
+        }
+    </script>
+</body>
+</html>
