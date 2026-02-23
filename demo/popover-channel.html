@@ -1,1 +1,56 @@
-
+<html>
+<head>
+    <title>A Modern Road Trip</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+        }
+        header {
+            background-image: url('hero-image.jpg');
+            background-size: cover;
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+        article {
+            padding: 20px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Adventure Awaits!</h1>
+        <p>Experience the ultimate road trip.</p>
+    </header>
+    <article>
+        <h2>Introduction</h2>
+        <p>There's something magical about hitting the open road. The freedom of exploring new places and creating lasting memories with friends and family is what road trips are all about.</p>
+        <h2>Planning Your Trip</h2>
+        <p>Consider your route, activities, and what to pack! Make it enjoyable and spontaneous.</p>
+        <h2>Interactive Elements</h2>
+        <p>Click the button below to get a random road trip destination!</p>
+        <button onclick="getRandomDestination()">Get Destination</button>
+        <p id="destination"></p>
+    </article>
+    <script>
+        const destinations = ['Grand Canyon', 'Yosemite National Park', 'New Orleans', 'Austin', 'Chicago'];
+        function getRandomDestination() {
+            const randomIndex = Math.floor(Math.random() * destinations.length);
+            document.getElementById('destination').innerText = `You should visit: ${destinations[randomIndex]}!`;
+        }
+    </script>
+</body>
+</html>
