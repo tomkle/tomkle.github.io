@@ -21,4 +21,5 @@
 - [TODO: Any features that don't work within Channels, or common client misconceptions]
 
 ## Real-world examples
-- **Use case:** [TODO: Company type / scenario — what they used Channels for and why it worked well]
+- **AZ (Football club / Sports) — [https://az.nl/video](https://az.nl/video):** [Short description of the use case.]
+
