@@ -1,4 +1,4 @@
-# Sales Knowledge Assistant — Design Document
+# Product BrAIn — Design Document
 
 **Date:** 2026-03-20
 **Status:** Approved
