@@ -11,9 +11,13 @@
     </style>
   </head>
   <body>
-    <div aria-live="polite">
-      <h1>Welcome to the Aria Live POC 4</h1>
-      <p>This is the body text. When this content changes dynamically, a screen reader will announce the update without interrupting the user's current activity.</p>
-    </div>
+    <div aria-live="polite" id="content"></div>
   </body>
+  <script>
+    setTimeout(function () {
+      document.getElementById('content').innerHTML =
+        '<h1>Welcome to the Aria Live POC 5</h1>' +
+        '<p>This is the body text. When this content changes dynamically, a screen reader will announce the update without interrupting the user\'s current activity.</p>';
+    }, 5000);
+  </script>
   </html>
