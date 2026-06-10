@@ -8,10 +8,11 @@
     body { font-family: sans-serif; max-width: 600px; margin: 40px auto; padding: 0 20px; }
     h1 { font-size: 1.8rem; margin-bottom: 16px; }
     p { font-size: 1rem; line-height: 1.6; }
+    h1:focus, p:focus { outline: 3px solid #005fcc; border-radius: 3px; }
   </style>
 </head>
 <body>
-  <h1 aria-live="polite">Welcome to the Aria Live POC</h1>
-  <p aria-live="polite">This is the body text. When this content changes dynamically, a screen reader will announce the update without interrupting the user's current activity.</p>
+  <h1 tabindex="0" aria-live="polite">Welcome to the Aria Live POC 2</h1>
+  <p tabindex="0" aria-live="polite">This is the body text. When this content changes dynamically, a screen reader will announce the update without interrupting the user's current activity.</p>
 </body>
 </html>
