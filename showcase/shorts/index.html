@@ -90,15 +90,22 @@
     margin-right:4px;
   }
   select#shortsSwitcher{
-    background:var(--green-700);
+    background-color:var(--green-700);
     color:var(--white);
     border:1px solid rgba(255,255,255,0.25);
     border-radius:6px;
-    padding:7px 10px;
     font-size:13px;
     font-family:"Helvetica Neue",Arial,sans-serif;
     cursor:pointer;
     max-width:220px;
+    appearance:none;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'><path d='M0 0l5 6 5-6z' fill='%23ffffff'/></svg>");
+    background-repeat:no-repeat;
+    background-position:right 10px center;
+    background-size:10px 6px;
+    padding:7px 28px 7px 10px;
   }
   select#shortsSwitcher:hover{border-color:rgba(255,255,255,0.5);}
   button#clearHistoryBtn{
