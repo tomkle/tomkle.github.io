@@ -1,4 +1,5 @@
 [
   { "label": "Basic (Horizontal)", "url": "https://showcase.bbvms.com/sh/311.js?displayFormat=list" },
-  { "label": "Basic (Vertical)", "url": "https://showcase.bbvms.com/sh/312.js?displayFormat=list" } 
+  { "label": "Basic (Vertical)", "url": "https://showcase.bbvms.com/sh/312.js?displayFormat=list" },
+  { "label": "Shelf styling", "url": "https://showcase.bbvms.com/sh/313.js?displayFormat=list" } 
 ]
