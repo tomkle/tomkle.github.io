@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Coral Gardens of the Deep — Wild Current</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <style>
   :root{
     --green-900:#132a1f;
@@ -100,6 +101,17 @@
     max-width:220px;
   }
   select#shortsSwitcher:hover{border-color:rgba(255,255,255,0.5);}
+  button#clearHistoryBtn{
+    background:var(--green-700);
+    color:var(--white);
+    border:1px solid rgba(255,255,255,0.25);
+    border-radius:6px;
+    padding:7px 9px;
+    font-size:14px;
+    line-height:1;
+    cursor:pointer;
+  }
+  button#clearHistoryBtn:hover{border-color:rgba(255,255,255,0.5);}
 
   /* ---------- Layout ---------- */
   .page-wrap{
@@ -370,6 +382,7 @@
     <div class="header-tools">
       <label for="shortsSwitcher">Shorts:</label>
       <select id="shortsSwitcher" aria-label="Choose which Shorts embed to display"></select>
+      <button type="button" id="clearHistoryBtn" title="Clear watched history" aria-label="Clear watched history"><i class="fa-solid fa-trash"></i></button>
     </div>
   </div>
 </header>
@@ -530,8 +543,10 @@
 
 <script>
 (function () {
+  var SELECTION_KEY = "wildcurrent_selected_shorts_url";
   var selectEl = document.getElementById("shortsSwitcher");
   var embedContainer = document.getElementById("shortsEmbedContainer");
+  var clearHistoryBtn = document.getElementById("clearHistoryBtn");
   var options = [];
 
   function loadEmbed(option) {
@@ -544,6 +559,14 @@
   }
 
   selectEl.addEventListener("change", function () {
+    var option = options[parseInt(selectEl.value, 10)];
+    localStorage.setItem(SELECTION_KEY, option.url);
+    loadEmbed(option);
+  });
+
+  clearHistoryBtn.addEventListener("click", function () {
+    if (!confirm("Clear watched history for this demo?")) return;
+    localStorage.removeItem("bb_play_history");
     loadEmbed(options[parseInt(selectEl.value, 10)]);
   });
 
@@ -557,7 +580,15 @@
         o.textContent = opt.label;
         selectEl.appendChild(o);
       });
-      loadEmbed(options[0]);
+
+      var savedUrl = localStorage.getItem(SELECTION_KEY);
+      var savedIndex = 0;
+      for (var i = 0; i < options.length; i++) {
+        if (options[i].url === savedUrl) { savedIndex = i; break; }
+      }
+
+      selectEl.value = String(savedIndex);
+      loadEmbed(options[savedIndex]);
     });
 })();
 </script>
