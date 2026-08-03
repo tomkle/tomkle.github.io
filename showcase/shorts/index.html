@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coral Gardens of the Deep — Wild Current</title>
+<style>
+  :root{
+    --green-900:#132a1f;
+    --green-700:#1f4d36;
+    --green-600:#2c6b49;
+    --green-100:#e8f2ec;
+    --sand-50:#faf8f3;
+    --ink-900:#1a1a1a;
+    --ink-600:#5a5f5a;
+    --border:#e1ded4;
+    --white:#ffffff;
+    --accent:#d98e4a;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:"Georgia","Times New Roman",serif;
+    color:var(--ink-900);
+    background:var(--sand-50);
+    line-height:1.6;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+
+  /* ---------- Header ---------- */
+  header.site-header{
+    background:var(--green-900);
+    color:var(--white);
+    position:sticky;
+    top:0;
+    z-index:100;
+    box-shadow:0 2px 8px rgba(0,0,0,0.15);
+  }
+  .header-inner{
+    max-width:1200px;
+    margin:0 auto;
+    padding:14px 24px;
+    display:flex;
+    align-items:center;
+    gap:28px;
+    flex-wrap:wrap;
+  }
+  .logo{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-weight:700;
+    font-size:22px;
+    letter-spacing:0.5px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    white-space:nowrap;
+  }
+  .logo .leaf{color:var(--accent);font-size:22px;}
+  nav.primary-nav{
+    display:flex;
+    gap:22px;
+    flex:1;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:14px;
+    text-transform:uppercase;
+    letter-spacing:0.6px;
+    flex-wrap:wrap;
+  }
+  nav.primary-nav a{
+    opacity:0.85;
+    padding:6px 0;
+    border-bottom:2px solid transparent;
+    transition:opacity .15s, border-color .15s;
+  }
+  nav.primary-nav a:hover, nav.primary-nav a.active{
+    opacity:1;
+    border-bottom-color:var(--accent);
+  }
+  .header-tools{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+  }
+  .header-tools label{
+    font-size:12px;
+    opacity:0.75;
+    margin-right:4px;
+  }
+  select#shortsSwitcher{
+    background:var(--green-700);
+    color:var(--white);
+    border:1px solid rgba(255,255,255,0.25);
+    border-radius:6px;
+    padding:7px 10px;
+    font-size:13px;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    cursor:pointer;
+    max-width:220px;
+  }
+  select#shortsSwitcher:hover{border-color:rgba(255,255,255,0.5);}
+
+  /* ---------- Layout ---------- */
+  .page-wrap{
+    max-width:1200px;
+    margin:0 auto;
+    padding:32px 24px 0;
+    display:grid;
+    grid-template-columns:minmax(0,1fr) 300px;
+    gap:48px;
+  }
+  @media (max-width:860px){
+    .page-wrap{grid-template-columns:1fr;}
+  }
+
+  /* ---------- Article ---------- */
+  article.main-article{min-width:0;}
+  .kicker{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    font-size:12px;
+    color:var(--green-600);
+    font-weight:700;
+    margin-bottom:10px;
+  }
+  h1.article-title{
+    font-size:38px;
+    line-height:1.2;
+    margin:0 0 14px;
+    color:var(--green-900);
+  }
+  .article-meta{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:13px;
+    color:var(--ink-600);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:22px;
+    flex-wrap:wrap;
+  }
+  .article-meta .author-avatar{
+    width:32px;height:32px;border-radius:50%;
+    background:var(--green-600);color:white;
+    display:flex;align-items:center;justify-content:center;
+    font-family:"Helvetica Neue",Arial,sans-serif;font-weight:700;font-size:13px;
+  }
+  .hero-image{
+    width:100%;
+    aspect-ratio:16/9;
+    object-fit:cover;
+    border-radius:6px;
+    margin-bottom:8px;
+  }
+  .image-caption{
+    font-size:12px;
+    color:var(--ink-600);
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    margin-bottom:28px;
+  }
+  .article-body p{
+    font-size:18px;
+    margin:0 0 20px;
+    color:#2a2a2a;
+  }
+  .article-body h2{
+    font-size:26px;
+    color:var(--green-900);
+    margin:38px 0 16px;
+  }
+  .pull-quote{
+    border-left:3px solid var(--accent);
+    padding:4px 0 4px 20px;
+    margin:30px 0;
+    font-size:22px;
+    font-style:italic;
+    color:var(--green-700);
+  }
+
+  /* ---------- Embed block ---------- */
+  .embed-block{
+    margin:40px 0;
+  }
+  .embed-block-label{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:0.8px;
+    color:var(--green-700);
+    font-weight:700;
+    margin-bottom:12px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  #shortsEmbedContainer{
+    min-height:60px;
+  }
+  .embed-placeholder{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:13px;
+    color:var(--ink-600);
+    padding:20px 0;
+    text-align:center;
+  }
+
+  /* ---------- Sidebar ---------- */
+  aside.sidebar{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+  }
+  .sidebar-card{
+    background:var(--white);
+    border:1px solid var(--border);
+    border-radius:8px;
+    padding:20px;
+    margin-bottom:24px;
+  }
+  .sidebar-card h3{
+    font-family:Georgia,serif;
+    font-size:16px;
+    margin:0 0 14px;
+    color:var(--green-900);
+    border-bottom:2px solid var(--green-100);
+    padding-bottom:10px;
+  }
+  .author-card{display:flex;gap:12px;align-items:center;}
+  .author-card .author-avatar-lg{
+    width:54px;height:54px;border-radius:50%;
+    background:var(--green-600);color:white;
+    display:flex;align-items:center;justify-content:center;
+    font-weight:700;font-size:18px;flex-shrink:0;
+  }
+  .author-card .author-info p{margin:0;font-size:13px;color:var(--ink-600);}
+  .author-card .author-info strong{font-size:14px;color:var(--ink-900);}
+
+  .trending-item{
+    display:flex;
+    gap:10px;
+    padding:10px 0;
+    border-bottom:1px solid var(--border);
+    font-size:13px;
+  }
+  .trending-item:last-child{border-bottom:none;}
+  .trending-item .num{
+    font-family:Georgia,serif;
+    font-size:20px;
+    color:var(--green-100);
+    font-weight:700;
+    -webkit-text-stroke:1px var(--green-600);
+    width:22px;
+    flex-shrink:0;
+  }
+  .trending-item .t-title{color:var(--ink-900);font-weight:600;line-height:1.35;}
+  .trending-item .t-meta{color:var(--ink-600);font-size:11px;margin-top:2px;}
+
+  .newsletter-card p{font-size:13px;color:var(--ink-600);margin:0 0 14px;}
+  .newsletter-card input[type=email]{
+    width:100%;
+    padding:9px 10px;
+    border:1px solid var(--border);
+    border-radius:6px;
+    margin-bottom:10px;
+    font-size:13px;
+    font-family:inherit;
+  }
+  .newsletter-card button{
+    width:100%;
+    padding:10px;
+    background:var(--green-700);
+    color:white;
+    border:none;
+    border-radius:6px;
+    font-size:13px;
+    font-weight:600;
+    cursor:pointer;
+  }
+  .newsletter-card button:hover{background:var(--green-600);}
+
+  .tag-list{display:flex;flex-wrap:wrap;gap:8px;}
+  .tag-list span{
+    background:var(--green-100);
+    color:var(--green-700);
+    font-size:12px;
+    padding:5px 10px;
+    border-radius:14px;
+  }
+
+  /* ---------- Related articles ---------- */
+  section.related-articles{
+    max-width:1200px;
+    margin:20px auto 0;
+    padding:40px 24px 60px;
+    border-top:1px solid var(--border);
+  }
+  section.related-articles h2{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:20px;
+    color:var(--green-900);
+    margin:0 0 24px;
+  }
+  .related-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:24px;
+  }
+  @media (max-width:860px){
+    .related-grid{grid-template-columns:repeat(2,1fr);}
+  }
+  @media (max-width:520px){
+    .related-grid{grid-template-columns:1fr;}
+  }
+  .related-card{
+    background:var(--white);
+    border:1px solid var(--border);
+    border-radius:8px;
+    overflow:hidden;
+    cursor:default;
+  }
+  .related-card img{aspect-ratio:4/3;object-fit:cover;}
+  .related-card-body{padding:14px;font-family:"Helvetica Neue",Arial,sans-serif;}
+  .related-card-tag{
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+    color:var(--green-600);
+    font-weight:700;
+    margin-bottom:6px;
+  }
+  .related-card-body h3{
+    font-family:Georgia,serif;
+    font-size:15px;
+    margin:0 0 8px;
+    color:var(--ink-900);
+    line-height:1.35;
+  }
+  .related-card-body p{
+    font-size:12.5px;
+    color:var(--ink-600);
+    margin:0;
+  }
+
+  /* ---------- Footer ---------- */
+  footer.site-footer{
+    background:var(--green-900);
+    color:rgba(255,255,255,0.7);
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:13px;
+    text-align:center;
+    padding:24px;
+    margin-top:20px;
+  }
+
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo"><span class="leaf">&#127807;</span> Wild Current</div>
+    <nav class="primary-nav">
+      <a href="#" class="active">Home</a>
+      <a href="#">Wildlife</a>
+      <a href="#">Oceans</a>
+      <a href="#">Climate</a>
+      <a href="#">Conservation</a>
+      <a href="#">About</a>
+    </nav>
+    <div class="header-tools">
+      <label for="shortsSwitcher">Shorts feed:</label>
+      <select id="shortsSwitcher" aria-label="Choose which Shorts embed to display"></select>
+    </div>
+  </div>
+</header>
+
+<div class="page-wrap">
+
+  <article class="main-article">
+    <div class="kicker">Oceans &middot; Field Report</div>
+    <h1 class="article-title">Coral Gardens of the Deep: Inside the Race to Save the World's Reefs</h1>
+    <div class="article-meta">
+      <div class="author-avatar">M.O.</div>
+      <span><strong>Mira Okafor</strong> &middot; Marine Ecology Correspondent</span>
+      <span>&middot;</span>
+      <span>July 28, 2026</span>
+      <span>&middot;</span>
+      <span>9 min read</span>
+    </div>
+
+    <img class="hero-image" src="https://picsum.photos/seed/coralreef/1200/675" alt="Diver photographing a coral reef">
+    <div class="image-caption">A marine biologist surveys a coral transplant site off the coast of Raja Ampat, Indonesia.</div>
+
+    <div class="article-body">
+      <p>At six in the morning, the water off the coast of Raja Ampat is the color of hammered pewter. Dr. Lena Sato slips beneath the surface with a slate board and a waterproof pencil, and within a few strokes of her fins the reef opens up beneath her like a city seen from a low-flying plane — towers of staghorn coral, sprawling plate corals the size of dinner tables, and fish moving through it all in commuter-hour density.</p>
+
+      <p>This particular reef shouldn't exist. Ten years ago it was a field of rubble, bleached and broken by a marine heatwave that killed nearly sixty percent of the coral in the region. What's growing here now is the result of one of the largest coral restoration efforts ever attempted — thousands of nursery-grown fragments, hand-tied onto the seafloor, one by one, by teams of divers working in six-hour shifts.</p>
+
+      <h2>A Reef on Life Support</h2>
+      <p>Coral reefs cover less than one percent of the ocean floor, yet they support roughly a quarter of all marine species at some point in their life cycle. They are also, by most measures, the ecosystem most immediately threatened by a warming planet. Since 1950, the world has lost about half of its living coral cover, and projections suggest that even under moderate warming scenarios, most remaining reefs could face severe degradation within the next three decades.</p>
+
+      <p>"The old model was conservation — protect what's there and hope it recovers," Sato says, toweling off on the dive boat. "We're past that now in a lot of places. What's there won't recover fast enough on its own. So the question became: can we actively rebuild it faster than we're losing it?"</p>
+
+      <p>The answer, cautiously, is yes — at least at a local scale. Restoration teams around the world have refined techniques for growing coral fragments in nurseries, either on suspended rope lines or on small ceramic and concrete structures, before transplanting them onto degraded reef. Growth rates that once took a decade in the wild can now be compressed into eighteen months.</p>
+
+      <blockquote class="pull-quote">"We're not going to out-plant our way out of climate change. But we can buy reefs time — and time is the one thing they've never had less of."</blockquote>
+    </div>
+
+    <div class="embed-block">
+      <div class="embed-block-label">
+        <span>Watch: Nature Shorts</span>
+      </div>
+      <div id="shortsEmbedContainer">
+        <div class="embed-placeholder">Loading Shorts feed&hellip;</div>
+      </div>
+    </div>
+
+    <div class="article-body">
+      <h2>Breeding for Heat</h2>
+      <p>The more ambitious frontier is selective breeding. At research stations from the Great Barrier Reef to the Florida Keys, scientists are identifying coral colonies that survived past bleaching events — the presumed heat-tolerant individuals — and cross-breeding them in land-based tanks, then testing offspring under simulated heat stress before they're ever returned to open water.</p>
+
+      <p>It is, in effect, an assisted evolution program, compressing a process that would naturally take centuries into a handful of breeding seasons. Early results are promising but modest: some lab-bred colonies show measurably better survival under thermal stress than wild controls, though nobody is claiming a heat-proof coral is close at hand.</p>
+
+      <h2>The Limits of Human Hands</h2>
+      <p>For all its promise, restoration at the scale needed to matter globally runs into a blunt logistical wall: divers can only tie so many coral fragments to a reef in a day. Some teams have started experimenting with automated methods — coral fragments embedded in biodegradable seeding devices that can be distributed from a boat across a wider area, or robotic arms designed to place fragments with the same precision as a trained diver, at a fraction of the cost.</p>
+
+      <p>None of it changes the underlying arithmetic, though. Restoration works best as a bridge — a way to preserve genetic diversity and buy reefs time while emissions come down. Without progress on warming itself, even the most successful nursery becomes a garden maintained against a rising tide.</p>
+
+      <p>Sato is characteristically unsentimental about this tension. "We're not going to out-plant our way out of climate change," she says. "But we can buy reefs time — and time is the one thing they've never had less of."</p>
+
+      <h2>What Success Looks Like</h2>
+      <p>Back on the boat, the team logs the morning's survey data: coral cover estimates, fish counts, water temperature at three depths. It's unglamorous work, repeated daily for years, and it's exactly what gives restoration science its credibility — the slow accumulation of evidence that a rebuilt reef can function like a real one, attracting fish, cycling nutrients, buffering the coastline from storm surge.</p>
+
+      <p>The reef off Raja Ampat isn't back to what it was before the heatwave. It may never be. But it is, unmistakably, alive — and for a growing number of scientists watching reefs disappear elsewhere, that's beginning to look like the most realistic definition of success they have.</p>
+    </div>
+  </article>
+
+  <aside class="sidebar">
+    <div class="sidebar-card author-card">
+      <div class="author-avatar-lg">M.O.</div>
+      <div class="author-info">
+        <strong>Mira Okafor</strong>
+        <p>Covers marine ecosystems and ocean policy. Previously reported from the Coral Triangle and the Bering Sea.</p>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <h3>Trending Now</h3>
+      <div class="trending-item">
+        <div class="num">1</div>
+        <div><div class="t-title">Wolves Return to the Alps After a Century Away</div><div class="t-meta">Wildlife &middot; 6 min read</div></div>
+      </div>
+      <div class="trending-item">
+        <div class="num">2</div>
+        <div><div class="t-title">The Fungus Networks That Feed Entire Forests</div><div class="t-meta">Ecology &middot; 8 min read</div></div>
+      </div>
+      <div class="trending-item">
+        <div class="num">3</div>
+        <div><div class="t-title">Inside the Fight to Save the Vaquita, the World's Rarest Marine Mammal</div><div class="t-meta">Conservation &middot; 7 min read</div></div>
+      </div>
+      <div class="trending-item">
+        <div class="num">4</div>
+        <div><div class="t-title">How Beavers Became North America's Best Flood Defense</div><div class="t-meta">Wildlife &middot; 5 min read</div></div>
+      </div>
+    </div>
+
+    <div class="sidebar-card newsletter-card">
+      <h3>The Weekly Current</h3>
+      <p>One email a week. The best nature reporting, no noise.</p>
+      <input type="email" placeholder="you@example.com" disabled>
+      <button type="button" disabled>Subscribe</button>
+    </div>
+
+    <div class="sidebar-card">
+      <h3>Explore Tags</h3>
+      <div class="tag-list">
+        <span>Coral Reefs</span>
+        <span>Ocean Warming</span>
+        <span>Restoration</span>
+        <span>Biodiversity</span>
+        <span>Indonesia</span>
+        <span>Marine Biology</span>
+      </div>
+    </div>
+  </aside>
+
+</div>
+
+<section class="related-articles">
+  <h2>More from Wild Current</h2>
+  <div class="related-grid">
+    <div class="related-card">
+      <img src="https://picsum.photos/seed/wolves-alps/400/300" alt="">
+      <div class="related-card-body">
+        <div class="related-card-tag">Wildlife</div>
+        <h3>Wolves Return to the Alps After a Century Away</h3>
+        <p>Camera-trap data confirms breeding packs in three new territories.</p>
+      </div>
+    </div>
+    <div class="related-card">
+      <img src="https://picsum.photos/seed/fungus-network/400/300" alt="">
+      <div class="related-card-body">
+        <div class="related-card-tag">Ecology</div>
+        <h3>The Fungus Networks That Feed Entire Forests</h3>
+        <p>Mycorrhizal fungi quietly move sugar and warning signals between trees.</p>
+      </div>
+    </div>
+    <div class="related-card">
+      <img src="https://picsum.photos/seed/vaquita/400/300" alt="">
+      <div class="related-card-body">
+        <div class="related-card-tag">Conservation</div>
+        <h3>Inside the Fight to Save the Vaquita</h3>
+        <p>Fewer than ten individuals remain in the wild, and time is short.</p>
+      </div>
+    </div>
+    <div class="related-card">
+      <img src="https://picsum.photos/seed/beavers-flood/400/300" alt="">
+      <div class="related-card-body">
+        <div class="related-card-tag">Wildlife</div>
+        <h3>How Beavers Became North America's Best Flood Defense</h3>
+        <p>Reintroduced dams are cutting downstream flood peaks by up to 60%.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  &copy; 2026 Wild Current. A demo publication for testing purposes only.
+</footer>
+
+<script>
+(function () {
+  var selectEl = document.getElementById("shortsSwitcher");
+  var embedContainer = document.getElementById("shortsEmbedContainer");
+  var options = [];
+
+  function loadEmbed(option) {
+    embedContainer.innerHTML = "";
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.async = true;
+    script.src = option.url;
+    embedContainer.appendChild(script);
+  }
+
+  selectEl.addEventListener("change", function () {
+    loadEmbed(options[parseInt(selectEl.value, 10)]);
+  });
+
+  fetch("shorts-config.json", { cache: "no-store" })
+    .then(function (res) { return res.json(); })
+    .then(function (data) {
+      options = data;
+      options.forEach(function (opt, i) {
+        var o = document.createElement("option");
+        o.value = String(i);
+        o.textContent = opt.label;
+        selectEl.appendChild(o);
+      });
+      loadEmbed(options[0]);
+    });
+})();
+</script>
+
+</body>
+</html>
