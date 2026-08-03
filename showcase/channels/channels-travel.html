@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>True North — Travel Channel</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+  :root{
+    --navy-950:#050b18;
+    --navy-900:#0b1a30;
+    --navy-800:#132844;
+    --white:#ffffff;
+    --gold:#c9a24b;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:"Georgia","Times New Roman",serif;
+    color:var(--white);
+  }
+  a{color:inherit;text-decoration:none;}
+
+  /* ---------- Header ---------- */
+  header.site-header{
+    background:var(--navy-950);
+    color:var(--white);
+    border-bottom:1px solid rgba(201,162,75,0.25);
+  }
+  .header-inner{
+    max-width:1400px;
+    margin:0 auto;
+    padding:14px 24px;
+    display:flex;
+    align-items:center;
+    gap:28px;
+    flex-wrap:wrap;
+  }
+  .logo{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-weight:700;
+    font-size:22px;
+    letter-spacing:0.5px;
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+    white-space:nowrap;
+  }
+  .logo .compass{color:var(--gold);font-size:22px;}
+  nav.primary-nav{
+    display:flex;
+    gap:22px;
+    flex:1;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:14px;
+    text-transform:uppercase;
+    letter-spacing:0.6px;
+    flex-wrap:wrap;
+  }
+  nav.primary-nav a{
+    opacity:0.8;
+    padding:6px 0;
+    border-bottom:2px solid transparent;
+    transition:opacity .15s, border-color .15s;
+  }
+  nav.primary-nav a:hover, nav.primary-nav a.active{
+    opacity:1;
+    border-bottom-color:var(--gold);
+  }
+  .header-tools{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+  }
+  .header-tools label{
+    font-size:12px;
+    opacity:0.7;
+    margin-right:4px;
+  }
+  select#channelsSwitcher{
+    background-color:var(--navy-800);
+    color:var(--white);
+    border:1px solid rgba(201,162,75,0.35);
+    border-radius:6px;
+    font-size:13px;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    cursor:pointer;
+    max-width:220px;
+    appearance:none;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'><path d='M0 0l5 6 5-6z' fill='%23ffffff'/></svg>");
+    background-repeat:no-repeat;
+    background-position:right 10px center;
+    background-size:10px 6px;
+    padding:7px 28px 7px 10px;
+  }
+  select#channelsSwitcher:hover{border-color:var(--gold);}
+  button#clearHistoryBtn{
+    background:var(--navy-800);
+    color:var(--white);
+    border:1px solid rgba(201,162,75,0.35);
+    border-radius:6px;
+    padding:7px 9px;
+    font-size:14px;
+    line-height:1;
+    cursor:pointer;
+  }
+  button#clearHistoryBtn:hover{border-color:var(--gold);}
+
+  /* ---------- Channels embed ---------- */
+  main.channels-main{
+    min-height:70vh;
+    background:#000;
+  }
+  #channelsEmbed{
+    width:100%;
+  }
+
+  /* ---------- Footer ---------- */
+  footer.site-footer{
+    background:var(--navy-950);
+    color:rgba(255,255,255,0.55);
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:13px;
+    text-align:center;
+    padding:16px;
+    border-top:1px solid rgba(201,162,75,0.25);
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo"><span class="compass">&#129517;</span> True North</div>
+    <nav class="primary-nav">
+      <a href="#">Home</a>
+      <a href="#" class="active">Watch</a>
+      <a href="#">Destinations</a>
+      <a href="#">Guides</a>
+      <a href="#">About</a>
+    </nav>
+    <div class="header-tools">
+      <label for="channelsSwitcher">Channel:</label>
+      <select id="channelsSwitcher" aria-label="Choose which Channels embed to display"></select>
+      <button type="button" id="clearHistoryBtn" title="Clear watched history" aria-label="Clear watched history"><i class="fa-solid fa-trash"></i></button>
+    </div>
+  </div>
+</header>
+
+<main class="channels-main">
+  <div id="channelsEmbed"></div>
+</main>
+
+<footer class="site-footer">
+  &copy; 2026 True North. A demo publication for testing purposes only.
+</footer>
+
+<script>
+(function () {
+  var SELECTION_KEY = "truenorth_selected_channel_url";
+  var selectEl = document.getElementById("channelsSwitcher");
+  var embedContainer = document.getElementById("channelsEmbed");
+  var clearHistoryBtn = document.getElementById("clearHistoryBtn");
+  var options = [];
+
+  function loadEmbed(option) {
+    embedContainer.innerHTML = "";
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.async = true;
+    script.src = option.url;
+    embedContainer.appendChild(script);
+  }
+
+  selectEl.addEventListener("change", function () {
+    var option = options[parseInt(selectEl.value, 10)];
+    localStorage.setItem(SELECTION_KEY, option.url);
+    loadEmbed(option);
+  });
+
+  clearHistoryBtn.addEventListener("click", function () {
+    if (!confirm("Clear watched history for this demo?")) return;
+    localStorage.removeItem("bb_play_history");
+    loadEmbed(options[parseInt(selectEl.value, 10)]);
+  });
+
+  fetch("channels-config.json", { cache: "no-store" })
+    .then(function (res) { return res.json(); })
+    .then(function (data) {
+      options = data;
+      options.forEach(function (opt, i) {
+        var o = document.createElement("option");
+        o.value = String(i);
+        o.textContent = opt.label;
+        selectEl.appendChild(o);
+      });
+
+      var savedUrl = localStorage.getItem(SELECTION_KEY);
+      var savedIndex = 0;
+      for (var i = 0; i < options.length; i++) {
+        if (options[i].url === savedUrl) { savedIndex = i; break; }
+      }
+
+      selectEl.value = String(savedIndex);
+      loadEmbed(options[savedIndex]);
+    });
+})();
+</script>
+
+</body>
+</html>
