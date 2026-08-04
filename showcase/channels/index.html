@@ -160,7 +160,7 @@
 
 <script>
 (function () {
-  var SELECTION_KEY = "truenorth_selected_channel_url";
+  var PARAM = "embed";
   var selectEl = document.getElementById("channelsSwitcher");
   var embedContainer = document.getElementById("channelsEmbed");
   var clearHistoryBtn = document.getElementById("clearHistoryBtn");
@@ -175,9 +175,15 @@
     embedContainer.appendChild(script);
   }
 
+  function setUrlSlug(slug) {
+    var url = new URL(window.location.href);
+    url.searchParams.set(PARAM, slug);
+    window.history.replaceState(null, "", url);
+  }
+
   selectEl.addEventListener("change", function () {
     var option = options[parseInt(selectEl.value, 10)];
-    localStorage.setItem(SELECTION_KEY, option.url);
+    setUrlSlug(option.slug);
     loadEmbed(option);
   });
 
@@ -204,14 +210,15 @@
         selectEl.appendChild(o);
       });
 
-      var savedUrl = localStorage.getItem(SELECTION_KEY);
-      var savedIndex = 0;
+      var requestedSlug = new URL(window.location.href).searchParams.get(PARAM);
+      var index = 0;
       for (var i = 0; i < options.length; i++) {
-        if (options[i].url === savedUrl) { savedIndex = i; break; }
+        if (options[i].slug === requestedSlug) { index = i; break; }
       }
 
-      selectEl.value = String(savedIndex);
-      loadEmbed(options[savedIndex]);
+      selectEl.value = String(index);
+      setUrlSlug(options[index].slug);
+      loadEmbed(options[index]);
     });
 })();
 </script>
