@@ -199,7 +199,7 @@
     loadEmbed(options[parseInt(selectEl.value, 10)]);
   });
 
-  fetch("channels-config.json", { cache: "no-store" })
+  fetch("config.json", { cache: "no-store" })
     .then(function (res) { return res.json(); })
     .then(function (data) {
       options = data;
