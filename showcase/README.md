@@ -1,5 +1,7 @@
 
 ## Adding examples to the Showcase
+In both the folders for Channels and Shorts, you will find a `config.json` file
+
 Both folders contain a channels-config.json and shorts-config.json which you can edit to add more examples
 Each example should have the following information:
 Slug: Lowercased vesion of the title. Use dashes for spaces Will be added to the URL of the showcase exaples to allow for sharing examples
