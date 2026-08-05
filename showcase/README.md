@@ -10,4 +10,5 @@ When adding an example, add the following line to the file:
 The `slug` will be appended to the url when selecting one of the examples and should only contain lower case letter and not use spaces, but hypens instead. Each slug should also be unique. This will allow you to directly link to a specific example.
 
 ## Publication
-All examples are configured on the https://showcase.bbvms.com publication. Please treat this as a live publication at a client, so don't make any changes that might break these examples.
+All examples are configured on the https://showcase.bbvms.com publication. 
+Please treat this as a live publication at a client, so don't make any changes that might break these examples.
