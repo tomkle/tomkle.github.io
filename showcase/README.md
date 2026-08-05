@@ -3,7 +3,7 @@
 In both the folders for Channels and Shorts, you will find a `config.json` file that can be used to add more examples.
 When adding an example, add the following line to the file:
 
-```
+```json
 { "label": "Example name", "url": "https://showcase.bbvms.com/sh/1.js?displayFormat=list", "slug": "example-name" }
 ```
 
