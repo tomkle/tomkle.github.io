@@ -1,7 +1,5 @@
-# Introduction
-These examples can be used to showcase our functionalities at our clients and prospects. 
-
-We currently have two pages setup to showcase our Channels and Shorts functionalities.
+# Showcase
+Blue Billywig Showcases with examples for Channels, Shorts and the Player
 
 ## Adding examples to the Showcase
 In both the folders for Channels and Shorts, you will find a `config.json` file that can be used to add more examples.
