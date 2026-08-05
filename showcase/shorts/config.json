@@ -1,6 +1,6 @@
 [
-  { "slug": "one", "label": "Basic (Horizontal)", "url": "https://showcase.bbvms.com/sh/311.js?displayFormat=list" },
-  { "slug": "two", "label": "Basic (Vertical)", "url": "https://showcase.bbvms.com/sh/312.js?displayFormat=list" },
-  { "slug": "three", "label": "Shelf styling", "url": "https://showcase.bbvms.com/sh/313.js?displayFormat=list" },
-  { "slug": "four", "label": "Watched (Mark & Remove)", "url": "https://showcase.bbvms.com/sh/314.js?displayFormat=list" }   
+  { "label": "Basic (Horizontal)", "url": "https://showcase.bbvms.com/sh/311.js?displayFormat=list", "slug": "one" },
+  { "label": "Basic (Vertical)", "url": "https://showcase.bbvms.com/sh/312.js?displayFormat=list", "slug": "two" },
+  { "label": "Shelf styling", "url": "https://showcase.bbvms.com/sh/313.js?displayFormat=list", "slug": "three" },
+  { "label": "Watched (Mark & Remove)", "url": "https://showcase.bbvms.com/sh/314.js?displayFormat=list", "slug": "four" }   
 ]
