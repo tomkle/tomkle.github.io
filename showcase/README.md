@@ -11,6 +11,11 @@ When adding an example, add the following line to the file:
 { "label": "Example name", "url": "https://showcase.bbvms.com/ch/123.js", "slug": "example-name" }
 ```
 
+For the Player folder, we have a similar `config.json` file, but it requires slightly different information, which speaks for itself:
+```json
+ { "title": "Example name", "playout": "playout_name", "clipId": "12345678", "slug": "example-name" }
+```
+
 The `slug` will be appended to the url when selecting one of the examples and should only contain lower case letter and not use spaces, but hypens instead. Each slug should also be unique. This will allow you to directly link to a specific example.
 
 ## Publication
