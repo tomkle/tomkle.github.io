@@ -3,194 +3,460 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Blue Billywig — Embed Showcase</title>
+<title>The Last Nonnas — Hearth</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <style>
   :root{
-    --bg:#0a0b0d;
-    --bg-glow:#12151a;
-    --ink:#f4f2ee;
-    --ink-dim:#9a9a9a;
-    --border:rgba(255,255,255,0.08);
+    --sea-900:#0d3b4a;
+    --sea-700:#175c72;
+    --terracotta:#c1573e;
+    --terracotta-dark:#a3452f;
+    --olive:#7c8c4a;
+    --cream-50:#faf3e6;
+    --ink-900:#2b2118;
+    --ink-600:#6b5c4e;
+    --border:#e6d9c3;
+    --white:#ffffff;
   }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
   body{
-    font-family:"Helvetica Neue",Arial,sans-serif;
-    background:
-      radial-gradient(ellipse 900px 500px at 20% -10%, rgba(60,120,90,0.20), transparent 60%),
-      radial-gradient(ellipse 900px 500px at 85% 10%, rgba(90,110,180,0.16), transparent 60%),
-      radial-gradient(ellipse 900px 500px at 50% 100%, rgba(190,110,60,0.14), transparent 60%),
-      var(--bg);
-    color:var(--ink);
-    min-height:100vh;
-  }
-  a{color:inherit;text-decoration:none;}
-
-  .wrap{
-    max-width:1080px;
-    margin:0 auto;
-    padding:100px 24px 80px;
-  }
-
-  .kicker{
-    font-size:12px;
-    text-transform:uppercase;
-    letter-spacing:2px;
-    color:var(--ink-dim);
-    font-weight:600;
-    margin-bottom:18px;
-    text-align:center;
-  }
-  h1{
-    font-size:44px;
-    line-height:1.2;
-    text-align:center;
-    margin:0 auto 16px;
-    max-width:640px;
-    letter-spacing:-0.5px;
-  }
-  p.lede{
-    text-align:center;
-    color:var(--ink-dim);
-    font-size:17px;
-    max-width:520px;
-    margin:0 auto 64px;
+    font-family:"Georgia","Times New Roman",serif;
+    color:var(--ink-900);
+    background:var(--cream-50);
     line-height:1.6;
   }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
 
-  .grid{
-    display:grid;
-    grid-template-columns:repeat(3, 1fr);
-    gap:24px;
+  /* ---------- Header ---------- */
+  header.site-header{
+    background:var(--sea-900);
+    color:var(--white);
+    position:sticky;
+    top:0;
+    z-index:100;
+    box-shadow:0 2px 8px rgba(0,0,0,0.15);
   }
-  @media (max-width:860px){
-    .grid{grid-template-columns:1fr;}
-    h1{font-size:34px;}
+  .header-inner{
+    max-width:1200px;
+    margin:0 auto;
+    padding:14px 24px;
+    display:flex;
+    align-items:center;
+    gap:28px;
+    flex-wrap:wrap;
   }
-
-  .card{
-    position:relative;
-    display:block;
-    border-radius:16px;
-    padding:32px 26px;
-    border:1px solid var(--border);
-    background:linear-gradient(160deg, var(--c1), var(--c2));
-    overflow:hidden;
-    transition:transform .25s ease, box-shadow .25s ease;
-  }
-  .card:hover{
-    transform:translateY(-6px);
-    box-shadow:0 20px 40px -12px var(--glow);
-  }
-  .card::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:linear-gradient(160deg, rgba(255,255,255,0.10), transparent 45%);
-    pointer-events:none;
-  }
-
-  .card-icon{
-    font-size:34px;
-    margin-bottom:22px;
-    display:inline-block;
-  }
-  .card-eyebrow{
-    font-size:11px;
-    text-transform:uppercase;
-    letter-spacing:1px;
+  .logo{
+    font-family:"Helvetica Neue",Arial,sans-serif;
     font-weight:700;
-    opacity:0.75;
-    margin-bottom:8px;
-  }
-  .card h2{
-    font-family:Georgia,"Times New Roman",serif;
-    font-size:24px;
-    margin:0 0 10px;
-  }
-  .card p{
-    font-size:14px;
-    line-height:1.55;
-    opacity:0.88;
-    margin:0 0 22px;
-    min-height:63px;
-  }
-  .card .tag{
-    display:inline-block;
-    font-size:11px;
-    font-weight:600;
-    letter-spacing:0.3px;
-    padding:5px 10px;
-    border-radius:12px;
-    background:rgba(0,0,0,0.22);
-    margin-bottom:22px;
-  }
-  .card .view-link{
+    font-size:22px;
+    letter-spacing:0.5px;
     display:flex;
     align-items:center;
     gap:8px;
+    white-space:nowrap;
+  }
+  .logo .lemon{font-size:22px;}
+  nav.primary-nav{
+    display:flex;
+    gap:22px;
+    flex:1;
+    font-family:"Helvetica Neue",Arial,sans-serif;
     font-size:14px;
-    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.6px;
+    flex-wrap:wrap;
   }
-  .card .view-link .arrow{
-    transition:transform .2s ease;
+  nav.primary-nav a{
+    opacity:0.85;
+    padding:6px 0;
+    border-bottom:2px solid transparent;
+    transition:opacity .15s, border-color .15s;
   }
-  .card:hover .view-link .arrow{
-    transform:translateX(4px);
+  nav.primary-nav a:hover, nav.primary-nav a.active{
+    opacity:1;
+    border-bottom-color:var(--terracotta);
+  }
+  .header-tools{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+  }
+  .header-tools label{
+    font-size:12px;
+    opacity:0.75;
+    margin-right:4px;
+  }
+  select#playerSwitcher{
+    background-color:var(--sea-700);
+    color:var(--white);
+    border:1px solid rgba(255,255,255,0.25);
+    border-radius:6px;
+    font-size:13px;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    cursor:pointer;
+    max-width:220px;
+    appearance:none;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'><path d='M0 0l5 6 5-6z' fill='%23ffffff'/></svg>");
+    background-repeat:no-repeat;
+    background-position:right 10px center;
+    background-size:10px 6px;
+    padding:7px 28px 7px 10px;
+  }
+  select#playerSwitcher:hover{border-color:rgba(255,255,255,0.5);}
+  button#clearHistoryBtn{
+    background:var(--sea-700);
+    color:var(--white);
+    border:1px solid rgba(255,255,255,0.25);
+    border-radius:6px;
+    padding:7px 9px;
+    font-size:14px;
+    line-height:1;
+    cursor:pointer;
+  }
+  button#clearHistoryBtn:hover{border-color:rgba(255,255,255,0.5);}
+
+  /* ---------- Layout ---------- */
+  .page-wrap{
+    max-width:1200px;
+    margin:0 auto;
+    padding:32px 24px 0;
+    display:grid;
+    grid-template-columns:minmax(0,1fr) 300px;
+    gap:48px;
+  }
+  @media (max-width:860px){
+    .page-wrap{grid-template-columns:1fr;}
   }
 
-  .card.shorts{ --c1:#1f4d36; --c2:#0e2a1c; --glow:rgba(44,107,73,0.35); color:#eef7f1; }
-  .card.channels{ --c1:#132844; --c2:#050b18; --glow:rgba(201,162,75,0.30); color:#f1f5fb; }
-  .card.player{ --c1:#175c72; --c2:#0d3b4a; --glow:rgba(193,87,62,0.35); color:#f2f7f8; }
+  /* ---------- Article ---------- */
+  article.main-article{min-width:0;}
+  .kicker{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    font-size:12px;
+    color:var(--terracotta);
+    font-weight:700;
+    margin-bottom:10px;
+  }
+  h1.article-title{
+    font-size:38px;
+    line-height:1.2;
+    margin:0 0 14px;
+    color:var(--sea-900);
+  }
+  .article-meta{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:13px;
+    color:var(--ink-600);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:22px;
+    flex-wrap:wrap;
+  }
+  .article-meta .author-avatar{
+    width:32px;height:32px;border-radius:50%;
+    background:var(--terracotta);color:white;
+    display:flex;align-items:center;justify-content:center;
+    font-family:"Helvetica Neue",Arial,sans-serif;font-weight:700;font-size:13px;
+  }
+  .article-body p{
+    font-size:18px;
+    margin:0 0 20px;
+    color:#332921;
+  }
+  .article-body h2{
+    font-size:26px;
+    color:var(--sea-900);
+    margin:38px 0 16px;
+  }
+  .pull-quote{
+    border-left:3px solid var(--terracotta);
+    padding:4px 0 4px 20px;
+    margin:30px 0;
+    font-size:22px;
+    font-style:italic;
+    color:var(--sea-700);
+  }
 
-  footer{
+  /* ---------- Player embed ---------- */
+  .embed-block{
+    margin:40px 0;
+  }
+  #playerEmbedContainer{
+    min-height:60px;
+    border-radius:8px;
+    overflow:hidden;
+  }
+  .embed-placeholder{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:13px;
+    color:var(--ink-600);
+    padding:20px;
     text-align:center;
-    color:var(--ink-dim);
-    font-size:12.5px;
-    padding:40px 24px 60px;
+  }
+
+  /* ---------- Sidebar ---------- */
+  aside.sidebar{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+  }
+  .sidebar-card{
+    background:var(--white);
+    border:1px solid var(--border);
+    border-radius:8px;
+    padding:20px;
+    margin-bottom:24px;
+  }
+  .sidebar-card h3{
+    font-family:Georgia,serif;
+    font-size:16px;
+    margin:0 0 14px;
+    color:var(--sea-900);
+    border-bottom:2px solid var(--cream-50);
+    padding-bottom:10px;
+  }
+  .author-card{display:flex;gap:12px;align-items:center;}
+  .author-card .author-avatar-lg{
+    width:54px;height:54px;border-radius:50%;
+    background:var(--terracotta);color:white;
+    display:flex;align-items:center;justify-content:center;
+    font-weight:700;font-size:18px;flex-shrink:0;
+  }
+  .author-card .author-info p{margin:0;font-size:13px;color:var(--ink-600);}
+  .author-card .author-info strong{font-size:14px;color:var(--ink-900);}
+
+  .story-item{
+    display:flex;
+    gap:10px;
+    padding:10px 0;
+    border-bottom:1px solid var(--border);
+    font-size:13px;
+  }
+  .story-item:last-child{border-bottom:none;}
+  .story-item .s-title{color:var(--ink-900);font-weight:600;line-height:1.35;}
+  .story-item .s-meta{color:var(--ink-600);font-size:11px;margin-top:2px;}
+
+  .newsletter-card p{font-size:13px;color:var(--ink-600);margin:0 0 14px;}
+  .newsletter-card input[type=email]{
+    width:100%;
+    padding:9px 10px;
+    border:1px solid var(--border);
+    border-radius:6px;
+    margin-bottom:10px;
+    font-size:13px;
+    font-family:inherit;
+  }
+  .newsletter-card button{
+    width:100%;
+    padding:10px;
+    background:var(--sea-900);
+    color:white;
+    border:none;
+    border-radius:6px;
+    font-size:13px;
+    font-weight:600;
+    cursor:pointer;
+  }
+
+  .tag-list{display:flex;flex-wrap:wrap;gap:8px;}
+  .tag-list span{
+    background:var(--cream-50);
+    color:var(--olive);
+    font-size:12px;
+    padding:5px 10px;
+    border-radius:14px;
+    border:1px solid var(--border);
+  }
+
+  /* ---------- Footer ---------- */
+  footer.site-footer{
+    background:var(--sea-900);
+    color:rgba(255,255,255,0.7);
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:13px;
+    text-align:center;
+    padding:24px;
+    margin-top:20px;
   }
 </style>
 </head>
 <body>
 
-<div class="wrap">
-  <div class="kicker">Blue Billywig</div>
-  <h1>Three ways to bring video into a page</h1>
-  <p class="lede">Each demo is a real page built around one embed type — Shorts, Channels, and Player — dressed up as a different fictional publication so it feels like a real site, not a sandbox.</p>
-
-  <div class="grid">
-    <a class="card shorts" href="shorts/index.html">
-      <span class="card-icon">&#127807;</span>
-      <div class="card-eyebrow">Wild Current</div>
-      <h2>Shorts</h2>
-      <p>A nature magazine article with a Shorts feed embedded halfway through, switchable via a dropdown.</p>
-      <span class="tag">Article + Shorts switcher</span>
-      <div class="view-link">View demo <span class="arrow">&rarr;</span></div>
-    </a>
-
-    <a class="card channels" href="channels/index.html">
-      <span class="card-icon">&#129517;</span>
-      <div class="card-eyebrow">True North</div>
-      <h2>Channels</h2>
-      <p>A full-page video hub built entirely around a Channels embed — browse, autoplay, and category rows included.</p>
-      <span class="tag">Full-page + Channel switcher</span>
-      <div class="view-link">View demo <span class="arrow">&rarr;</span></div>
-    </a>
-
-    <a class="card player" href="player/index.html">
-      <span class="card-icon">&#127819;</span>
-      <div class="card-eyebrow">Hearth</div>
-      <h2>Player</h2>
-      <p>A long-form food story with a single Player clip embedded as the lead visual, right where a hero image would sit.</p>
-      <span class="tag">Article + Player switcher</span>
-      <div class="view-link">View demo <span class="arrow">&rarr;</span></div>
-    </a>
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo"><span class="lemon">&#127819;</span> Hearth</div>
+    <nav class="primary-nav">
+      <a href="#" class="active">Home</a>
+      <a href="#">Recipes</a>
+      <a href="#">Watch</a>
+      <a href="#">About</a>
+    </nav>
+    <div class="header-tools">
+      <label for="playerSwitcher">Recipe:</label>
+      <select id="playerSwitcher" aria-label="Choose which recipe video to display"></select>
+      <button type="button" id="clearHistoryBtn" title="Clear watched history" aria-label="Clear watched history"><i class="fa-solid fa-clock-rotate-left"></i></button>
+    </div>
   </div>
+</header>
+
+<div class="page-wrap">
+
+  <article class="main-article">
+    <div class="kicker">Italy &middot; Food &amp; Culture</div>
+    <h1 class="article-title">The Last Nonnas: Inside Italy's Race to Save Its Grandmothers' Recipes</h1>
+    <div class="article-meta">
+      <div class="author-avatar">C.B.</div>
+      <span><strong>Chiara Bellini</strong> &middot; Italy Correspondent</span>
+      <span>&middot;</span>
+      <span>August 4, 2026</span>
+      <span>&middot;</span>
+      <span>8 min read</span>
+    </div>
+
+    <div class="embed-block">
+      <div id="playerEmbedContainer">
+        <div class="embed-placeholder">Loading video&hellip;</div>
+      </div>
+    </div>
+
+    <div class="article-body">
+      <p>In a farmhouse kitchen outside Bari, Maria Lorusso is doing what she has done most mornings for the better part of seven decades: dragging a small knife across a rope of semolina dough, flicking each piece into the little ear-shaped curl that gives orecchiette its name. She doesn't measure the flour. She doesn't check a clock. Her hands simply know when the dough is ready, the way they've known since she was seven years old, standing on a stool next to her own grandmother.</p>
+
+      <p>Maria is 84. She has, by her own estimate, taught fewer than a dozen people to make pasta this way — and none of them, she says with a shrug that is somehow both resigned and amused, are under the age of forty. Across southern Italy, this scene is becoming rarer by the year. The nonnas who hold the region's culinary memory are aging out of their kitchens, and much of what they know was never written down in the first place.</p>
+
+      <h2>A Cuisine Passed Down, Not Written Down</h2>
+      <p>Italian home cooking has always been an oral tradition. Regional dishes vary not just from province to province but from kitchen to kitchen, shaped by whatever a family happened to grow, raise, or trade with a neighbor. A ragù in Bologna bears only a passing resemblance to one from Naples; a loaf of bread in Puglia is a different animal entirely from one baked two hours north. None of it was standardized, because none of it needed to be — it was simply what your nonna made, and you learned it by watching, not by reading.</p>
+
+      <p>That informality is precisely what makes it fragile now. As younger generations move to cities for work, and as the number of people willing to spend four hours making Sunday lunch shrinks with each decade, entire regional repertoires risk disappearing with the women who hold them. Food historians estimate that dozens of hyper-local pasta shapes, sauces, and preserving techniques have already been lost in the last fifty years, surviving only in the memories of people now in their eighties and nineties.</p>
+
+      <blockquote class="pull-quote">"Nobody wrote a cookbook for us. We were the cookbook."</blockquote>
+
+      <h2>The Race to Record What's Left</h2>
+      <p>A small but growing movement is trying to close that gap before it closes for good. Community cooking schools across Puglia, Sicily, and Emilia-Romagna have begun formal apprenticeship programs pairing nonnas with paid students — often young chefs or food writers — specifically to document techniques that have never appeared in any recipe book. Sessions are filmed, measurements are estimated after the fact by weighing what the nonna produced by feel, and the resulting notes are published to small regional archives rather than any single national database.</p>
+
+      <p>It is slow, unglamorous work. A single dish can take a full day to properly document, and the nonnas themselves are not always easy interview subjects — many insist there is nothing to explain, that the dough simply tells you what it needs. Getting that instinct into words that a stranger could follow is, more than one archivist has admitted, harder than it sounds.</p>
+
+      <h2>What Gets Lost When a Kitchen Goes Quiet</h2>
+      <p>The stakes go beyond nostalgia. Researchers studying Italy's regional food traditions argue that hyper-local cooking knowledge is also a record of agricultural history — which grains grew where, which vegetables were preserved for winter, which cuts of meat a poorer household made stretch across a week. Lose the recipe, and you often lose the only remaining account of how people actually lived.</p>
+
+      <p>For Maria, the motivation is simpler. She's not thinking about food history when she rolls out dough at six in the morning. She's thinking about her granddaughter, who visits on Sundays now, flour on her hands for the first time, learning the same curl of the wrist that was taught to Maria by a woman who never once wrote it down.</p>
+    </div>
+  </article>
+
+  <aside class="sidebar">
+    <div class="sidebar-card author-card">
+      <div class="author-avatar-lg">C.B.</div>
+      <div class="author-info">
+        <strong>Chiara Bellini</strong>
+        <p>Covers Italian food culture and rural traditions. Based between Rome and her grandmother's kitchen in Puglia.</p>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <h3>More From Italy</h3>
+      <div class="story-item">
+        <div><div class="s-title">The Secret to Bologna's Perfect Ragù</div><div class="s-meta">Emilia-Romagna &middot; 6 min read</div></div>
+      </div>
+      <div class="story-item">
+        <div><div class="s-title">Sicily's Street Food Revival</div><div class="s-meta">Sicily &middot; 7 min read</div></div>
+      </div>
+      <div class="story-item">
+        <div><div class="s-title">Inside Italy's Disappearing Osterias</div><div class="s-meta">Culture &middot; 9 min read</div></div>
+      </div>
+      <div class="story-item">
+        <div><div class="s-title">How Amalfi Lemons Became a National Obsession</div><div class="s-meta">Campania &middot; 5 min read</div></div>
+      </div>
+    </div>
+
+    <div class="sidebar-card newsletter-card">
+      <h3>The Sunday Table</h3>
+      <p>One email a week. Stories, recipes, and the people keeping them alive.</p>
+      <input type="email" placeholder="you@example.com" disabled>
+      <button type="button" disabled>Subscribe</button>
+    </div>
+
+    <div class="sidebar-card">
+      <h3>Tags</h3>
+      <div class="tag-list">
+        <span>Italy</span>
+        <span>Pasta</span>
+        <span>Slow Food</span>
+        <span>Puglia</span>
+        <span>Home Cooking</span>
+      </div>
+    </div>
+  </aside>
+
 </div>
 
-<footer>
-  Internal demo pages for Blue Billywig embeds. Not a real product.
+<footer class="site-footer">
+  &copy; 2026 Hearth. A demo publication for testing purposes only.
 </footer>
+
+<script>
+(function () {
+  var PARAM = "embed";
+  var selectEl = document.getElementById("playerSwitcher");
+  var embedContainer = document.getElementById("playerEmbedContainer");
+  var clearHistoryBtn = document.getElementById("clearHistoryBtn");
+  var options = [];
+
+  function loadEmbed(option) {
+    embedContainer.innerHTML = "";
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.async = true;
+    script.src = "https://showcase.bbvms.com/p/" + option.playout + "/c/" + option.clipId + ".js";
+    embedContainer.appendChild(script);
+  }
+
+  function setUrlSlug(slug) {
+    var url = new URL(window.location.href);
+    url.searchParams.set(PARAM, slug);
+    window.history.replaceState(null, "", url);
+  }
+
+  selectEl.addEventListener("change", function () {
+    var option = options[parseInt(selectEl.value, 10)];
+    setUrlSlug(option.slug);
+    loadEmbed(option);
+  });
+
+  clearHistoryBtn.addEventListener("click", function () {
+    if (!confirm("Clear watched history for this demo?")) return;
+    localStorage.removeItem("bb_play_history");
+    loadEmbed(options[parseInt(selectEl.value, 10)]);
+  });
+
+  fetch("config.json", { cache: "no-store" })
+    .then(function (res) { return res.json(); })
+    .then(function (data) {
+      options = data;
+      options.forEach(function (opt, i) {
+        var o = document.createElement("option");
+        o.value = String(i);
+        o.textContent = opt.title;
+        selectEl.appendChild(o);
+      });
+
+      var requestedSlug = new URL(window.location.href).searchParams.get(PARAM);
+      var index = 0;
+      for (var i = 0; i < options.length; i++) {
+        if (options[i].slug === requestedSlug) { index = i; break; }
+      }
+
+      selectEl.value = String(index);
+      setUrlSlug(options[index].slug);
+      loadEmbed(options[index]);
+    });
+})();
+</script>
 
 </body>
 </html>
