@@ -1,9 +1,10 @@
 [
-  { "label": "Baseline", "url": "https://showcase.bbvms.com/ch/1425.js", "slug": "one" },
-  { "label": "Thumnail styles", "url": "https://showcase.bbvms.com/ch/1426.js", "slug": "two" },
-  { "label": "Promotional playlist", "url": "https://showcase.bbvms.com/ch/1427.js", "slug": "three" },
-  { "label": "Watch history", "url": "https://showcase.bbvms.com/ch/1428.js", "slug": "four" },
-  { "label": "Multi page", "url": "https://showcase.bbvms.com/ch/1429.js", "slug": "five"},
-  { "label": "Promotional banners", "url": "https://showcase.bbvms.com/ch/1430.js", "slug": "six"},
-  { "label": "Playlist collections", "url": "https://showcase.bbvms.com/ch/1431.js", "slug": "seven"}
+  { "label": "Baseline", "url": "https://showcase.bbvms.com/ch/1425.js", "slug": "baseline" },
+  { "label": "Thumnail styles", "url": "https://showcase.bbvms.com/ch/1426.js", "slug": "thumbnail-styles" },
+  { "label": "Promotional playlist", "url": "https://showcase.bbvms.com/ch/1427.js", "slug": "promotional-playlist" },
+  { "label": "Watch history", "url": "https://showcase.bbvms.com/ch/1428.js", "slug": "watch-history" },
+  { "label": "Multi page", "url": "https://showcase.bbvms.com/ch/1429.js", "slug": "multi-page"},
+  { "label": "Promotional banners", "url": "https://showcase.bbvms.com/ch/1430.js", "slug": "promotional-banners"},
+  { "label": "Playlist collections", "url": "https://showcase.bbvms.com/ch/1431.js", "slug": "playlist-collections"},
+  { "label": "Content protection", "url": "https://showcase.bbvms.com/ch/1436.js", "slug": "content-protection"}
 ]
