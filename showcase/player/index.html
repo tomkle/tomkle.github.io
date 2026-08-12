@@ -435,7 +435,9 @@
     var script = document.createElement("script");
     script.type = "text/javascript";
     script.async = true;
-    script.src = "https://showcase.bbvms.com/p/" + option.playout + "/c/" + option.clipId + ".js";
+    script.src = option.type === "channel"
+      ? "https://showcase.bbvms.com/ch/" + option.channelId + ".js"
+      : "https://showcase.bbvms.com/p/" + option.playout + "/c/" + option.clipId + ".js";
     embedContainer.appendChild(script);
   }
 
