@@ -73,11 +73,6 @@
     gap:10px;
     font-family:"Helvetica Neue",Arial,sans-serif;
   }
-  .header-tools label{
-    font-size:12px;
-    opacity:0.7;
-    margin-right:4px;
-  }
   select#channelsSwitcher{
     background-color:var(--navy-800);
     color:var(--white);
@@ -108,6 +103,13 @@
     cursor:pointer;
   }
   button#clearHistoryBtn:hover{border-color:var(--gold);}
+
+  /* ---------- Header: small screens ---------- */
+  @media (max-width:700px){
+    nav.primary-nav{display:none;}
+    .logo .logo-text{display:none;}
+    .header-inner{justify-content:space-between;}
+  }
 
   /* ---------- Channels embed ---------- */
   main.channels-main{
@@ -210,7 +212,7 @@
 
 <header class="site-header">
   <div class="header-inner">
-    <a class="logo" href="../index.html"><span class="compass">&#129517;</span> True North</a>
+    <a class="logo" href="../index.html"><span class="compass">&#129517;</span> <span class="logo-text">True North</span></a>
     <nav class="primary-nav">
       <a href="#">Home</a>
       <a href="#" class="active">Watch</a>
@@ -219,7 +221,6 @@
       <a href="#">About</a>
     </nav>
     <div class="header-tools">
-      <label for="channelsSwitcher">Channel:</label>
       <select id="channelsSwitcher" aria-label="Choose which Channels embed to display"></select>
       <button type="button" id="clearHistoryBtn" title="Clear watched history" aria-label="Clear watched history"><i class="fa-solid fa-clock-rotate-left"></i></button>
     </div>

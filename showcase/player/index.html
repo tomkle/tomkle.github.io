@@ -84,11 +84,6 @@
     gap:10px;
     font-family:"Helvetica Neue",Arial,sans-serif;
   }
-  .header-tools label{
-    font-size:12px;
-    opacity:0.75;
-    margin-right:4px;
-  }
   select#playerSwitcher{
     background-color:var(--sea-700);
     color:var(--white);
@@ -119,6 +114,13 @@
     cursor:pointer;
   }
   button#clearHistoryBtn:hover{border-color:rgba(255,255,255,0.5);}
+
+  /* ---------- Header: small screens ---------- */
+  @media (max-width:700px){
+    nav.primary-nav{display:none;}
+    .logo .logo-text{display:none;}
+    .header-inner{justify-content:space-between;}
+  }
 
   /* ---------- Layout ---------- */
   .page-wrap{
@@ -308,7 +310,7 @@
 
 <header class="site-header">
   <div class="header-inner">
-    <a class="logo" href="../index.html"><span class="lemon">&#127819;</span> Hearth</a>
+    <a class="logo" href="../index.html"><span class="lemon">&#127819;</span> <span class="logo-text">Hearth</span></a>
     <nav class="primary-nav">
       <a href="#" class="active">Home</a>
       <a href="#">Recipes</a>
@@ -316,7 +318,6 @@
       <a href="#">About</a>
     </nav>
     <div class="header-tools">
-      <label for="playerSwitcher">Recipe:</label>
       <select id="playerSwitcher" aria-label="Choose which recipe video to display"></select>
       <button type="button" id="clearHistoryBtn" title="Clear watched history" aria-label="Clear watched history"><i class="fa-solid fa-clock-rotate-left"></i></button>
     </div>

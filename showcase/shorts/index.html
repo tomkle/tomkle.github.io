@@ -84,11 +84,6 @@
     gap:10px;
     font-family:"Helvetica Neue",Arial,sans-serif;
   }
-  .header-tools label{
-    font-size:12px;
-    opacity:0.75;
-    margin-right:4px;
-  }
   select#shortsSwitcher{
     background-color:var(--green-700);
     color:var(--white);
@@ -119,6 +114,13 @@
     cursor:pointer;
   }
   button#clearHistoryBtn:hover{border-color:rgba(255,255,255,0.5);}
+
+  /* ---------- Header: small screens ---------- */
+  @media (max-width:700px){
+    nav.primary-nav{display:none;}
+    .logo .logo-text{display:none;}
+    .header-inner{justify-content:space-between;}
+  }
 
   /* ---------- Layout ---------- */
   .page-wrap{
@@ -377,7 +379,7 @@
 
 <header class="site-header">
   <div class="header-inner">
-    <a class="logo" href="../index.html"><span class="leaf">&#127807;</span> Wild Current</a>
+    <a class="logo" href="../index.html"><span class="leaf">&#127807;</span> <span class="logo-text">Wild Current</span></a>
     <nav class="primary-nav">
       <a href="#" class="active">Home</a>
       <a href="#">Wildlife</a>
@@ -387,7 +389,6 @@
       <a href="#">About</a>
     </nav>
     <div class="header-tools">
-      <label for="shortsSwitcher">Shorts:</label>
       <select id="shortsSwitcher" aria-label="Choose which Shorts embed to display"></select>
       <button type="button" id="clearHistoryBtn" title="Clear watched history" aria-label="Clear watched history"><i class="fa-solid fa-clock-rotate-left"></i></button>
     </div>
