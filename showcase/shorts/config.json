@@ -3,5 +3,6 @@
   { "label": "Basic (Vertical)", "url": "https://showcase.bbvms.com/sh/312.js?displayFormat=list", "slug": "basic-vertical" },
   { "label": "Shelf styling", "url": "https://showcase.bbvms.com/sh/313.js?displayFormat=list", "slug": "shelf-styling" },
   { "label": "Watched (Mark & Remove)", "url": "https://showcase.bbvms.com/sh/314.js?displayFormat=list", "slug": "track-watched-clips" },
-  { "label": "Animated thumbnail(s)", "url": "https://showcase.bbvms.com/sh/316.js?displayFormat=list", "slug": "animated-thumbnails" }
+  { "label": "Animated thumbnail(s)", "url": "https://showcase.bbvms.com/sh/316.js?displayFormat=list", "slug": "animated-thumbnails" },
+  { "label": "Monetization", "url": "https://showcase.bbvms.com/sh/319.js?displayFormat=list", "slug": "monetization" }
 ]
