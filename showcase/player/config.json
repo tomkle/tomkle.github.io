@@ -1,5 +1,5 @@
 [
-  { "type": "player", "title": "Maria's Orecchiette, by Hand", "slug": "orecchiette", "playout": "default", "clipId": "7373243" },
-  { "type": "player","title": "Accessibility", "slug": "accessibility", "playout": "a11y", "clipId": "7378546" },
+  { "type": "player", "title": "Basic player", "slug": "basic-player", "playout": "default", "clipId": "7373243" },
+  { "type": "player","title": "Accessibility", "slug": "accessibility", "playout": "a11y", "clipId": "7384971" },
   { "type": "channel","title": "Mini Channel", "slug": "mini-channel", "channelId": "1432" }
 ]
