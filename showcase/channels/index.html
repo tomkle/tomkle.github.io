@@ -128,6 +128,82 @@
     padding:16px;
     border-top:1px solid rgba(201,162,75,0.25);
   }
+
+  /* ---------- Login modal ---------- */
+  .modal-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.6);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:1000;
+    padding:20px;
+  }
+  .modal-overlay.open{display:flex;}
+  .modal-box{
+    background:var(--navy-900);
+    border:1px solid rgba(201,162,75,0.35);
+    border-radius:12px;
+    max-width:380px;
+    width:100%;
+    padding:32px 28px;
+    text-align:center;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+  }
+  .modal-box .modal-icon{
+    font-size:26px;
+    color:var(--gold);
+    margin-bottom:14px;
+  }
+  .modal-box h2{
+    font-family:Georgia,"Times New Roman",serif;
+    font-size:22px;
+    margin:0 0 10px;
+    color:var(--white);
+  }
+  .modal-box .modal-sub{
+    font-size:13px;
+    color:rgba(255,255,255,0.65);
+    line-height:1.5;
+    margin:0 0 22px;
+  }
+  .modal-box input{
+    width:100%;
+    padding:10px 12px;
+    margin-bottom:10px;
+    border-radius:6px;
+    border:1px solid rgba(201,162,75,0.35);
+    background:var(--navy-800);
+    color:var(--white);
+    font-size:14px;
+    font-family:inherit;
+  }
+  .modal-box input::placeholder{color:rgba(255,255,255,0.4);}
+  .modal-actions{
+    display:flex;
+    gap:10px;
+    margin-top:16px;
+  }
+  .modal-actions .btn{
+    flex:1;
+    padding:10px;
+    border-radius:6px;
+    font-size:14px;
+    font-weight:600;
+    cursor:pointer;
+    font-family:inherit;
+  }
+  .modal-actions .btn-primary{
+    background:var(--gold);
+    color:var(--navy-950);
+    border:none;
+  }
+  .modal-actions .btn-ghost{
+    background:transparent;
+    color:var(--white);
+    border:1px solid rgba(255,255,255,0.25);
+  }
 </style>
 </head>
 <body>
@@ -158,13 +234,46 @@
   &copy; 2026 True North. A demo publication for testing purposes only.
 </footer>
 
+<div class="modal-overlay" id="loginModal">
+  <div class="modal-box">
+    <div class="modal-icon"><i class="fa-solid fa-lock"></i></div>
+    <h2>Premium Content</h2>
+    <p class="modal-sub">This video is available to premium members only. Log in to keep watching.</p>
+    <input type="email" placeholder="Email address">
+    <input type="password" placeholder="Password">
+    <div class="modal-actions">
+      <button type="button" class="btn btn-ghost">Cancel</button>
+      <button type="button" class="btn btn-primary" id="loginModalSubmit">Log In</button>
+    </div>
+  </div>
+</div>
+
 <script>
 (function () {
   var PARAM = "embed";
   var selectEl = document.getElementById("channelsSwitcher");
   var embedContainer = document.getElementById("channelsEmbed");
   var clearHistoryBtn = document.getElementById("clearHistoryBtn");
+  var loginModal = document.getElementById("loginModal");
+  var loginModalSubmit = document.getElementById("loginModalSubmit");
   var options = [];
+
+  // Fires whenever a viewer clicks a content-protected item, regardless of
+  // which channel is loaded or why it's protected (geo, subscription, etc.).
+  // We don't inspect e.detail.reason here — every case just shows this same
+  // generic "premium content" prompt.
+  window.addEventListener("contentblocked", function () {
+    loginModal.classList.add("open");
+  });
+
+  loginModal.addEventListener("click", function (e) {
+    if (e.target === loginModal) loginModal.classList.remove("open");
+  });
+
+  // Dummy login — just dismisses the dialog, no actual authentication.
+  loginModalSubmit.addEventListener("click", function () {
+    loginModal.classList.remove("open");
+  });
 
   function loadEmbed(option) {
     embedContainer.innerHTML = "";
