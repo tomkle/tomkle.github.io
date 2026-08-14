@@ -4,5 +4,6 @@
   { "label": "Shelf styling", "url": "https://showcase.bbvms.com/sh/313.js?displayFormat=list", "slug": "shelf-styling" },
   { "label": "Watched (Mark & Remove)", "url": "https://showcase.bbvms.com/sh/314.js?displayFormat=list", "slug": "track-watched-clips" },
   { "label": "Animated thumbnail(s)", "url": "https://showcase.bbvms.com/sh/316.js?displayFormat=list", "slug": "animated-thumbnails" },
-  { "label": "Monetization", "url": "https://showcase.bbvms.com/sh/319.js?displayFormat=list", "slug": "monetization" }
+  { "label": "Monetization", "url": "https://showcase.bbvms.com/sh/319.js?displayFormat=list", "slug": "monetization" },
+  { "label": "Call to Action", "url": "https://showcase.bbvms.com/sh/320.js?displayFormat=list", "slug": "cta" }
 ]
