@@ -2,194 +2,381 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Blue Billywig — Embed Showcase</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Showcase — Blue Billywig</title>
+
+<!-- Lato (body copy) — Gustavo is loaded locally in the stylesheet below. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;600;700&display=swap" rel="stylesheet">
+
 <style>
-  :root{
-    --bg:#0a0b0d;
-    --bg-glow:#12151a;
-    --ink:#f4f2ee;
-    --ink-dim:#9a9a9a;
-    --border:rgba(255,255,255,0.08);
-  }
-  *{box-sizing:border-box;}
-  html,body{margin:0;padding:0;}
-  body{
-    font-family:"Helvetica Neue",Arial,sans-serif;
-    background:
-      radial-gradient(ellipse 900px 500px at 20% -10%, rgba(60,120,90,0.20), transparent 60%),
-      radial-gradient(ellipse 900px 500px at 85% 10%, rgba(90,110,180,0.16), transparent 60%),
-      radial-gradient(ellipse 900px 500px at 50% 100%, rgba(190,110,60,0.14), transparent 60%),
-      var(--bg);
-    color:var(--ink);
-    min-height:100vh;
-  }
-  a{color:inherit;text-decoration:none;}
+/* ============================================================
+   BLUE BILLYWIG — SHOWCASE
+   Single file, no build step, no JavaScript.
+   Image slots are marked ">>> VISUAL <<<".
 
-  .wrap{
-    max-width:1080px;
-    margin:0 auto;
-    padding:100px 24px 80px;
-  }
+   Follows the trade-show banner: logo and headline hard left, a
+   pipe-separated segment line, and a white field sitting on a petrol
+   field with an amber rule near the foot. The cards straddle the split
+   the way the devices do on the banner.
+   ============================================================ */
 
-  .kicker{
-    font-size:12px;
-    text-transform:uppercase;
-    letter-spacing:2px;
-    color:var(--ink-dim);
-    font-weight:600;
-    margin-bottom:18px;
-    text-align:center;
-  }
-  h1{
-    font-size:44px;
-    line-height:1.2;
-    text-align:center;
-    margin:0 auto 16px;
-    max-width:640px;
-    letter-spacing:-0.5px;
-  }
-  p.lede{
-    text-align:center;
-    color:var(--ink-dim);
-    font-size:17px;
-    max-width:520px;
-    margin:0 auto 64px;
-    line-height:1.6;
-  }
+@font-face{
+  font-family:'Gustavo';
+  src:url('assets/Gustavo-Bold.otf') format('opentype');
+  font-weight:700;
+  font-style:normal;
+  font-display:swap;
+}
 
-  .grid{
-    display:grid;
-    grid-template-columns:repeat(3, 1fr);
-    gap:24px;
-  }
-  @media (max-width:860px){
-    .grid{grid-template-columns:1fr;}
-    h1{font-size:34px;}
-  }
+:root{
+  --navy:      #002837;   /* brand petrol */
+  --blue:      #649BD2;
+  --blue-ink:  #2F74B6;   /* darkened brand blue — links on white */
+  --amber:     #FAB44B;
+  --green:     #46AF91;
+  --coral:     #ED6A5B;
 
-  .card{
-    position:relative;
-    display:block;
-    border-radius:16px;
-    padding:32px 26px;
-    border:1px solid var(--border);
-    background:linear-gradient(160deg, var(--c1), var(--c2));
-    overflow:hidden;
-    transition:transform .25s ease, box-shadow .25s ease;
-  }
-  .card:hover{
-    transform:translateY(-6px);
-    box-shadow:0 20px 40px -12px var(--glow);
-  }
-  .card::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:linear-gradient(160deg, rgba(255,255,255,0.10), transparent 45%);
-    pointer-events:none;
-  }
+  --page:      #F7F8F8;
+  --card:      #FFFFFF;
+  --text:      #002837;
+  --muted:     #7C8D95;
+  --line:      rgba(0,40,55,.10);
 
-  .card-icon{
-    font-size:34px;
-    margin-bottom:22px;
-    display:inline-block;
-  }
-  .card-eyebrow{
-    font-size:11px;
-    text-transform:uppercase;
-    letter-spacing:1px;
-    font-weight:700;
-    opacity:0.75;
-    margin-bottom:8px;
-  }
-  .card h2{
-    font-family:Georgia,"Times New Roman",serif;
-    font-size:24px;
-    margin:0 0 10px;
-  }
-  .card p{
-    font-size:14px;
-    line-height:1.55;
-    opacity:0.88;
-    margin:0 0 22px;
-    min-height:63px;
-  }
-  .card .tag{
-    display:inline-block;
-    font-size:11px;
-    font-weight:600;
-    letter-spacing:0.3px;
-    padding:5px 10px;
-    border-radius:12px;
-    background:rgba(0,0,0,0.22);
-    margin-bottom:22px;
-  }
-  .card .view-link{
-    display:flex;
-    align-items:center;
-    gap:8px;
-    font-size:14px;
-    font-weight:600;
-  }
-  .card .view-link .arrow{
-    transition:transform .2s ease;
-  }
-  .card:hover .view-link .arrow{
-    transform:translateX(4px);
-  }
+  --font-display: 'Gustavo', 'Lato', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-text:    'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
-  .card.shorts{ --c1:#1f4d36; --c2:#0e2a1c; --glow:rgba(44,107,73,0.35); color:#eef7f1; }
-  .card.channels{ --c1:#132844; --c2:#050b18; --glow:rgba(201,162,75,0.30); color:#f1f5fb; }
-  .card.player{ --c1:#175c72; --c2:#0d3b4a; --glow:rgba(193,87,62,0.35); color:#f2f7f8; }
+  /* Four cards at the ~345px the design specifies, plus gaps and padding */
+  --maxw: 1480px;
 
-  footer{
-    text-align:center;
-    color:var(--ink-dim);
-    font-size:12.5px;
-    padding:40px 24px 60px;
-  }
+  /* How far into the card row the white field gives way to petrol */
+  --split: 150px;
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+
+body{
+  margin:0;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  background:var(--page);
+  color:var(--text);
+  font-family:var(--font-text);
+  font-size:16px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+
+:focus-visible{ outline:2px solid var(--blue-ink); outline-offset:3px; border-radius:4px; }
+
+.shell{ width:100%; max-width:var(--maxw); margin:0 auto; padding:0 40px; }
+
+/* ---------- Header ---------- */
+/* Vertical rhythm scales with the viewport height so the page fits a laptop
+   screen without scrolling, while staying generous on a large display. */
+/* The header takes the leftover vertical space rather than main, so on a tall
+   screen the logo and headline get the extra air and the card row — with the
+   petrol field that starts inside it — settles lower down. On a short screen
+   there is no leftover space and nothing grows. */
+.head{
+  flex:1 1 auto;
+  display:flex; flex-direction:column; justify-content:center;
+  padding:clamp(26px, 4vh, 80px) 0 clamp(42px, 8vh, 104px);
+}
+
+.logo{ display:inline-block; text-decoration:none; margin-bottom:clamp(20px, 3.5vh, 44px); }
+.logo img{ height:clamp(48px, 7.5vh, 74px); width:auto; display:block; }
+
+.head h1{
+  margin:0 0 clamp(12px, 2.2vh, 20px);
+  font-family:var(--font-display); font-weight:700;
+  font-size:min(clamp(2.4rem, 5vw, 3.6rem), 7.2vh);
+  line-height:1.05;
+  letter-spacing:-.025em;
+  color:var(--navy);
+}
+
+.head .lede{
+  margin:0;
+  max-width:760px;
+  font-size:16px;
+  color:var(--text);
+}
+
+/* ---------- Showcase ----------
+   The petrol field starts partway down the card row, so the cards cross it. */
+/* The petrol sits on <main>, which stretches to fill the viewport, so the
+   field runs unbroken from the split all the way into the footer. */
+main{
+  flex:0 0 auto;
+  position:relative;
+}
+main::before{
+  content:''; position:absolute; z-index:0;
+  left:0; right:0; top:var(--split); bottom:0;
+  background:var(--navy);
+}
+
+.showcase{ position:relative; z-index:1; padding-bottom:clamp(28px, 4vh, 68px); }
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(4, minmax(0,1fr));
+  gap:30px;
+}
+
+.card{
+  display:flex; flex-direction:column;
+  color:var(--text);            /* the card is a link — don't inherit UA link blue */
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:10px;
+  text-decoration:none;
+  box-shadow:0 6px 22px -12px rgba(0,40,55,.35);
+  transition:box-shadow .22s ease, transform .22s ease;
+}
+.card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 16px 34px -14px rgba(0,40,55,.45);
+}
+
+/* >>> VISUAL <<< Mockups live in assets/ — transparent PNG or WebP, 16:10.
+     The figure matches that ratio, so a device sits in it with no letterboxing.
+     Regenerate with:  cwebp -q 86 -resize 1400 0 <source>.png -o assets/<name>.webp */
+.card-figure{
+  position:relative;
+  margin:0; overflow:hidden;
+  aspect-ratio:16/10;   /* the mockups sit straight on the card, no panel */
+}
+.card-img{
+  width:100%; height:100%;
+  object-fit:contain;
+  display:block;
+  padding:6px;
+}
+
+.chip{
+  position:absolute; top:10px; right:10px;
+  padding:4px 10px; border-radius:99px;
+  background:var(--amber); color:var(--navy);
+  font-family:var(--font-display); font-weight:700;
+  font-size:11px; letter-spacing:.05em; text-transform:uppercase;
+  line-height:1.4;
+}
+
+.card-body{ padding:clamp(4px, .9vh, 10px) 4px 6px; display:flex; flex-direction:column; flex:1; }
+
+.card h2{
+  margin:0 0 9px;
+  font-family:var(--font-display); font-weight:700;
+  font-size:19px; letter-spacing:-.015em; color:var(--navy);
+}
+
+.card p{ margin:0 0 clamp(14px, 2.2vh, 24px); font-size:14.5px; line-height:1.5; flex:1; }
+
+.card-link{
+  display:inline-flex; align-items:center; gap:8px;
+  font-size:13px; font-weight:600; color:var(--blue-ink);
+}
+.card-link svg{ width:15px; height:15px; transition:transform .2s ease; }
+.card:hover .card-link svg{ transform:translateX(3px); }
+
+/* ---------- Coming soon ---------- */
+.card--soon{ cursor:default; }
+.card--soon:hover{ transform:none; box-shadow:0 6px 22px -12px rgba(0,40,55,.35); }
+.card--soon .card-img{ opacity:.45; filter:grayscale(.6); }
+.card--soon h2,
+.card--soon p{ opacity:.6; }
+
+.card-note{ font-size:13px; font-weight:600; color:var(--muted); }
+
+/* ---------- Footer ----------
+   Amber rule across the petrol field, as on the banner. */
+.foot{
+  background:var(--navy);
+  color:rgba(247,248,248,.62);
+  font-size:12.5px;
+  padding-bottom:clamp(20px, 3vh, 40px);
+}
+/* The rule sits inside .shell's padding, so it lines up exactly with the
+   card row above it rather than running the full container width. */
+.foot-rule{
+  position:relative;
+  padding-top:clamp(16px, 2.5vh, 26px);
+}
+.foot-rule::before{
+  content:''; position:absolute; top:0; left:0; right:0; height:2px;
+  background:var(--amber);
+  transform:scaleX(1); transform-origin:left;
+}
+
+/* ---------- Entrance ----------
+   One pass on load, top to bottom, done inside a second. Each keyframe block
+   only declares `from`, so the end state is the element's own style — the
+   animation leaves nothing behind that could fight the hover transform. */
+@keyframes rise{ from{ opacity:0; transform:translateY(18px); } }
+@keyframes draw{ from{ transform:scaleX(0); } }
+
+.logo,
+.head h1,
+.head .lede,
+.card{
+  animation:rise .5s cubic-bezier(.22,1,.36,1) backwards;
+}
+.logo            { animation-delay:.05s; }
+.head h1         { animation-delay:.11s; }
+.head .lede      { animation-delay:.17s; }
+.card:nth-child(1){ animation-delay:.24s; }
+.card:nth-child(2){ animation-delay:.30s; }
+.card:nth-child(3){ animation-delay:.36s; }
+.card:nth-child(4){ animation-delay:.42s; }
+
+.foot-rule::before{
+  animation:draw .7s cubic-bezier(.22,1,.36,1) .5s backwards;
+}
+
+@media (prefers-reduced-motion:reduce){
+  *{ transition-duration:.01ms !important; animation:none !important; }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width:1120px){
+  .cards{ grid-template-columns:repeat(2, minmax(0,1fr)); gap:26px; }
+  :root{ --split:170px; }
+}
+@media (max-width:640px){
+  .shell{ padding:0 22px; }
+  .head{ padding:52px 0 44px; }
+  .logo img{ height:56px; }
+  .cards{ grid-template-columns:1fr; }
+  :root{ --split:130px; }
+}
 </style>
 </head>
 <body>
 
-<div class="wrap">
-  <div class="kicker">Blue Billywig</div>
-  <h1>Three ways to bring video into a page</h1>
-  <p class="lede">Each demo is a real page built around one embed type — Shorts, Channels, and Player — dressed up as a different fictional publication so it feels like a real site, not a sandbox.</p>
+<!-- ============================ HEADER ============================ -->
+<header class="head">
+  <div class="shell">
 
-  <div class="grid">
-    <a class="card shorts" href="shorts/index.html">
-      <span class="card-icon">&#127807;</span>
-      <div class="card-eyebrow">Wild Current</div>
-      <h2>Shorts</h2>
-      <p>A nature magazine article with a Shorts feed embedded halfway through, switchable via a dropdown.</p>
-      <span class="tag">Article + Shorts switcher</span>
-      <div class="view-link">View demo <span class="arrow">&rarr;</span></div>
+    <a class="logo" href="https://www.bluebillywig.com">
+      <img src="assets/logo.svg" alt="Blue Billywig" width="1217" height="360">
     </a>
 
-    <a class="card channels" href="channels/index.html">
-      <span class="card-icon">&#129517;</span>
-      <div class="card-eyebrow">True North</div>
-      <h2>Channels</h2>
-      <p>A full-page video hub built entirely around a Channels embed — browse, autoplay, and category rows included.</p>
-      <span class="tag">Full-page + Channel switcher</span>
-      <div class="view-link">View demo <span class="arrow">&rarr;</span></div>
-    </a>
+    <h1>Showcase</h1>
 
-    <a class="card player" href="player/index.html">
-      <span class="card-icon">&#127819;</span>
-      <div class="card-eyebrow">Hearth</div>
-      <h2>Player</h2>
-      <p>A long-form food story with a single Player clip embedded as the lead visual, right where a hero image would sit.</p>
-      <span class="tag">Article + Player switcher</span>
-      <div class="view-link">View demo <span class="arrow">&rarr;</span></div>
-    </a>
+    <p class="lede">
+      A curated library of live demos, grouped by product area. Every example runs
+      the current build. <br> Open a collection and take what you need into your next
+      conversation.
+    </p>
   </div>
-</div>
+</header>
 
-<footer>
-  Internal demo pages for Blue Billywig embeds. Not a real product.
+<!-- ============================ CARDS ============================ -->
+<main>
+  <section class="showcase">
+    <div class="shell">
+      <div class="cards">
+
+        <!-- ---------- PLAYER ---------- -->
+        <a class="card" href="player/?embed=basic-player">
+          <figure class="card-figure">
+            <img class="card-img" src="assets/player.webp"
+                 alt="The Blue Billywig player running a video with captions and full controls, on a laptop">
+          </figure>
+          <div class="card-body">
+            <h2>Player</h2>
+            <p>
+              A selection of examples of our video player showcasing the different
+              configuration and functional options.
+            </p>
+            <span class="card-link">
+              View showcases
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                   stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 12h15M13 6l6 6-6 6"/>
+              </svg>
+            </span>
+          </div>
+        </a>
+
+        <!-- ---------- CHANNELS ---------- -->
+        <a class="card" href="channels/?embed=baseline">
+          <figure class="card-figure">
+            <img class="card-img" src="assets/channels.webp" loading="lazy"
+                 alt="A branded video portal with a featured item and a row of recent videos, on a laptop">
+          </figure>
+          <div class="card-body">
+            <h2>Channels</h2>
+            <p>
+              Video pages and content overviews. Playlists, carousels, categories and
+              search, styled to sit inside any brand.
+            </p>
+            <span class="card-link">
+              View showcases
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                   stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 12h15M13 6l6 6-6 6"/>
+              </svg>
+            </span>
+          </div>
+        </a>
+
+        <!-- ---------- SHORTS ---------- -->
+        <a class="card" href="shorts/?embed=basic-horizontal">
+          <figure class="card-figure">
+            <img class="card-img" src="assets/shorts.webp" loading="lazy"
+                 alt="A vertical Shorts swipe feed, on a laptop">
+          </figure>
+          <div class="card-body">
+            <h2>Shorts</h2>
+            <p>
+              Vertical video the way an audience already knows it: swipe feeds, stories
+              and snackable clips built for mobile first.
+            </p>
+            <span class="card-link">
+              View showcases
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                   stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 12h15M13 6l6 6-6 6"/>
+              </svg>
+            </span>
+          </div>
+        </a>
+
+        <!-- ---------- ACCESSIBILITY (not live yet) ---------- -->
+        <div class="card card--soon">
+          <figure class="card-figure">
+            <img class="card-img" src="assets/accessibility.webp" loading="lazy"
+                 alt="A player with captions and accessibility controls enabled, on a laptop">
+            <span class="chip">Coming soon</span>
+          </figure>
+          <div class="card-body">
+            <h2>Accessibility</h2>
+            <p>
+              Examples of captions, audio description, keyboard navigation and screen
+              reader support, all shown working in a live player.
+            </p>
+            <span class="card-note">In preparation</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============================ FOOTER ============================ -->
+<footer class="foot">
+  <div class="shell">
+    <div class="foot-rule">
+      For internal and demo usage only. All content is fake and generated by AI.
+    </div>
+  </div>
 </footer>
 
 </body>
