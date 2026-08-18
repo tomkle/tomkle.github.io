@@ -6,5 +6,6 @@
   { "label": "Multi page", "url": "https://showcase.bbvms.com/ch/1429.js", "slug": "multi-page"},
   { "label": "Promotional banners", "url": "https://showcase.bbvms.com/ch/1430.js", "slug": "promotional-banners"},
   { "label": "Playlist collections", "url": "https://showcase.bbvms.com/ch/1431.js", "slug": "playlist-collections"},
-  { "label": "Content protection", "url": "https://showcase.bbvms.com/ch/1436.js", "slug": "content-protection"}
+  { "label": "Content protection", "url": "https://showcase.bbvms.com/ch/1436.js", "slug": "content-protection"},
+  { "label": "Soft embargo", "url": "https://showcase.bbvms.com/ch/1443.js", "slug": "soft-embargo"}
 ]
