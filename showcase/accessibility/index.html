@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Built by Default — Threshold</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+  :root{
+    --indigo-950:#12163a;
+    --indigo-800:#232a5c;
+    --violet:#7c5cff;
+    --violet-dark:#5b3fd6;
+    --slate-50:#f4f5fa;
+    --ink-900:#1b1f2e;
+    --ink-600:#5b6072;
+    --border:#e2e4ee;
+    --white:#ffffff;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:"Georgia","Times New Roman",serif;
+    color:var(--ink-900);
+    background:var(--slate-50);
+    line-height:1.6;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+
+  /* ---------- Header ---------- */
+  header.site-header{
+    background:var(--indigo-950);
+    color:var(--white);
+    position:sticky;
+    top:0;
+    z-index:100;
+    box-shadow:0 2px 8px rgba(0,0,0,0.15);
+  }
+  .header-inner{
+    max-width:1200px;
+    margin:0 auto;
+    padding:14px 24px;
+    display:flex;
+    align-items:center;
+    gap:28px;
+    flex-wrap:wrap;
+  }
+  .logo{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-weight:700;
+    font-size:22px;
+    letter-spacing:0.5px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    white-space:nowrap;
+  }
+  .logo .door{font-size:26px;}
+  nav.primary-nav{
+    display:flex;
+    gap:22px;
+    flex:1;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:14px;
+    text-transform:uppercase;
+    letter-spacing:0.6px;
+    flex-wrap:wrap;
+  }
+  nav.primary-nav a{
+    opacity:0.85;
+    padding:6px 0;
+    border-bottom:2px solid transparent;
+    transition:opacity .15s, border-color .15s;
+  }
+  nav.primary-nav a:hover, nav.primary-nav a.active{
+    opacity:1;
+    border-bottom-color:var(--violet);
+  }
+  .header-tools{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+  }
+  select#playerSwitcher{
+    background-color:var(--indigo-800);
+    color:var(--white);
+    border:1px solid rgba(255,255,255,0.25);
+    border-radius:6px;
+    font-size:13px;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    cursor:pointer;
+    max-width:220px;
+    appearance:none;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'><path d='M0 0l5 6 5-6z' fill='%23ffffff'/></svg>");
+    background-repeat:no-repeat;
+    background-position:right 10px center;
+    background-size:10px 6px;
+    padding:7px 28px 7px 10px;
+  }
+  select#playerSwitcher:hover{border-color:rgba(255,255,255,0.5);}
+  button#clearHistoryBtn{
+    background:var(--indigo-800);
+    color:var(--white);
+    border:1px solid rgba(255,255,255,0.25);
+    border-radius:6px;
+    padding:7px 9px;
+    font-size:14px;
+    line-height:1;
+    cursor:pointer;
+  }
+  button#clearHistoryBtn:hover{border-color:rgba(255,255,255,0.5);}
+
+  /* ---------- Header: small screens ---------- */
+  @media (max-width:700px){
+    nav.primary-nav{display:none;}
+    .logo .logo-text{display:none;}
+    .header-inner{justify-content:space-between;}
+  }
+
+  /* ---------- Layout ---------- */
+  .page-wrap{
+    max-width:1200px;
+    margin:0 auto;
+    padding:32px 24px 0;
+    display:grid;
+    grid-template-columns:minmax(0,1fr) 300px;
+    gap:48px;
+  }
+  @media (max-width:860px){
+    .page-wrap{grid-template-columns:1fr;}
+  }
+
+  /* ---------- Article ---------- */
+  article.main-article{min-width:0;}
+  .kicker{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    font-size:12px;
+    color:var(--violet-dark);
+    font-weight:700;
+    margin-bottom:10px;
+  }
+  h1.article-title{
+    font-size:38px;
+    line-height:1.2;
+    margin:0 0 14px;
+    color:var(--indigo-950);
+  }
+  .article-meta{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:13px;
+    color:var(--ink-600);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:22px;
+    flex-wrap:wrap;
+  }
+  .article-meta .author-avatar{
+    width:32px;height:32px;border-radius:50%;
+    background:var(--violet);color:white;
+    display:flex;align-items:center;justify-content:center;
+    font-family:"Helvetica Neue",Arial,sans-serif;font-weight:700;font-size:13px;
+  }
+  .hero-image{
+    width:100%;
+    aspect-ratio:16/9;
+    object-fit:cover;
+    display:block;
+    border-radius:6px;
+    margin-bottom:8px;
+  }
+  .image-caption{
+    font-size:12px;
+    color:var(--ink-600);
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    margin-bottom:28px;
+  }
+  .image-caption a{
+    color:var(--violet-dark);
+    text-decoration:underline;
+  }
+  .article-body p{
+    font-size:18px;
+    margin:0 0 20px;
+    color:#242838;
+  }
+  .article-body h2{
+    font-size:26px;
+    color:var(--indigo-950);
+    margin:38px 0 16px;
+  }
+  .pull-quote{
+    border-left:3px solid var(--violet);
+    padding:4px 0 4px 20px;
+    margin:30px 0;
+    font-size:22px;
+    font-style:italic;
+    color:var(--indigo-800);
+  }
+
+  /* ---------- Player embed ---------- */
+  .embed-block{
+    margin:40px 0;
+  }
+  #playerEmbedContainer{
+    min-height:60px;
+    border-radius:8px;
+    overflow:hidden;
+  }
+  .embed-placeholder{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:13px;
+    color:var(--ink-600);
+    padding:20px;
+    text-align:center;
+  }
+
+  /* ---------- Sidebar ---------- */
+  aside.sidebar{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+  }
+  .sidebar-card{
+    background:var(--white);
+    border:1px solid var(--border);
+    border-radius:8px;
+    padding:20px;
+    margin-bottom:24px;
+  }
+  .sidebar-card h3{
+    font-family:Georgia,serif;
+    font-size:16px;
+    margin:0 0 14px;
+    color:var(--indigo-950);
+    border-bottom:2px solid var(--slate-50);
+    padding-bottom:10px;
+  }
+  .author-card{display:flex;gap:12px;align-items:center;}
+  .author-card .author-avatar-lg{
+    width:54px;height:54px;border-radius:50%;
+    background:var(--violet);color:white;
+    display:flex;align-items:center;justify-content:center;
+    font-weight:700;font-size:18px;flex-shrink:0;
+  }
+  .author-card .author-info p{margin:0;font-size:13px;color:var(--ink-600);}
+  .author-card .author-info strong{font-size:14px;color:var(--ink-900);}
+
+  .story-item{
+    display:flex;
+    gap:10px;
+    padding:10px 0;
+    border-bottom:1px solid var(--border);
+    font-size:13px;
+  }
+  .story-item:last-child{border-bottom:none;}
+  .story-item .s-title{color:var(--ink-900);font-weight:600;line-height:1.35;}
+  .story-item .s-meta{color:var(--ink-600);font-size:11px;margin-top:2px;}
+
+  .newsletter-card p{font-size:13px;color:var(--ink-600);margin:0 0 14px;}
+  .newsletter-card input[type=email]{
+    width:100%;
+    padding:9px 10px;
+    border:1px solid var(--border);
+    border-radius:6px;
+    margin-bottom:10px;
+    font-size:13px;
+    font-family:inherit;
+  }
+  .newsletter-card button{
+    width:100%;
+    padding:10px;
+    background:var(--indigo-950);
+    color:white;
+    border:none;
+    border-radius:6px;
+    font-size:13px;
+    font-weight:600;
+    cursor:pointer;
+  }
+
+  .tag-list{display:flex;flex-wrap:wrap;gap:8px;}
+  .tag-list span{
+    background:var(--slate-50);
+    color:var(--violet-dark);
+    font-size:12px;
+    padding:5px 10px;
+    border-radius:14px;
+    border:1px solid var(--border);
+  }
+
+  /* ---------- Footer ---------- */
+  footer.site-footer{
+    background:var(--indigo-950);
+    color:rgba(255,255,255,0.7);
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:13px;
+    text-align:center;
+    padding:24px;
+    margin-top:20px;
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="../index.html"><span class="door">&#128682;</span> <span class="logo-text">Threshold</span></a>
+    <nav class="primary-nav">
+      <a href="#" class="active">Home</a>
+      <a href="#">Policy</a>
+      <a href="#">Innovation</a>
+      <a href="#">About</a>
+    </nav>
+    <div class="header-tools">
+      <select id="playerSwitcher" aria-label="Choose which video to display"></select>
+      <button type="button" id="clearHistoryBtn" title="Clear watched history" aria-label="Clear watched history"><i class="fa-solid fa-clock-rotate-left"></i></button>
+    </div>
+  </div>
+</header>
+
+<div class="page-wrap">
+
+  <article class="main-article">
+    <div class="kicker">Europe &middot; Innovation</div>
+    <h1 class="article-title">Built by Default: How One EU Deadline Sparked a Design Renaissance</h1>
+    <div class="article-meta">
+      <div class="author-avatar">E.N.</div>
+      <span><strong>Elena Novak</strong> &middot; European Innovation Correspondent</span>
+      <span>&middot;</span>
+      <span>August 12, 2026</span>
+      <span>&middot;</span>
+      <span>7 min read</span>
+    </div>
+
+    <img class="hero-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/14_EU_Member_Flags_in_front_of_European_Parliament_in_Brussels.jpg/1280px-14_EU_Member_Flags_in_front_of_European_Parliament_in_Brussels.jpg" alt="Flags of EU member states in front of the European Parliament building in Brussels">
+    <div class="image-caption">The European Parliament in Brussels, where the European Accessibility Act was adopted in 2019. Photo: Marek Ślusarczyk / <a href="https://commons.wikimedia.org/wiki/File:14_EU_Member_Flags_in_front_of_European_Parliament_in_Brussels.jpg" target="_blank" rel="noopener">Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by/3.0/deed.en" target="_blank" rel="noopener">CC BY 3.0</a>.</div>
+
+    <div class="article-body">
+      <p>On June 28, 2025, a regulation seven years in the making quietly came into force across the European Union. The European Accessibility Act requires that a long list of everyday digital products and services — banking apps, e-commerce sites, e-readers, transport ticketing, and yes, video platforms — meet a common accessibility standard. For most product teams, it landed as a compliance deadline: a checklist, an audit, a scramble.</p>
+
+      <p>A year on, something less predictable has happened. In interviews with product leads across a dozen European companies, the same pattern keeps surfacing: teams that treated the deadline as a floor to clear, rather than a box to tick, ended up shipping products that were simply better — for everyone who used them, not just the users the rule was written for.</p>
+    </div>
+
+    <div class="embed-block">
+      <div id="playerEmbedContainer">
+        <div class="embed-placeholder">Loading video&hellip;</div>
+      </div>
+    </div>
+
+    <div class="article-body">
+      <h2>The Feature Built for One Person Helps Everyone</h2>
+      <p>Engineers have a name for this pattern: the curb-cut effect, after the sloped sidewalk edges originally installed for wheelchair users that turned out to be just as useful for parents with strollers, delivery couriers, and travelers with rolling luggage. The same effect is now showing up in software. Captions added to satisfy the EAA get used overwhelmingly by people watching video with the sound off — on a train, in an open-plan office, in a language that isn't their first. Keyboard navigation added for people who can't use a mouse turns out to be faster for power users who never touch a trackpad if they can help it.</p>
+
+      <p>Video platforms have been a particularly visible test case, since so much of the regulation's language was written with rich media in mind. Adjustable playback speed, high-contrast player skins, and full keyboard control were accessibility requirements on paper. In practice, product teams report they're now simply expected features — the kind a reviewer would flag as missing, regardless of who's asking.</p>
+
+      <blockquote class="pull-quote">"We stopped asking whether a feature was 'for accessibility' or 'for everyone.' On the other side of this deadline, that's not a useful distinction anymore."</blockquote>
+
+      <h2>From Compliance Line Item to Competitive Edge</h2>
+      <p>The shift shows up in how companies talk about the work internally. Teams that treated 2025 purely as a legal deadline describe a year of retrofitting: patching existing products against an external checklist, often under time pressure, often imperfectly. Teams that started earlier — or that folded accessibility into their design systems from the start — describe something closer to a product advantage: fewer support tickets, broader usable audiences, and interfaces that tend to hold up better under real-world conditions like poor lighting, one-handed use, or a cracked phone screen.</p>
+
+      <p>That second group is growing. Several design leads pointed to a shift in how accessibility gets discussed in planning meetings — less as a separate audit stage bolted onto the end of a project, more as a default assumption baked into the first draft, the same way responsive layout or basic security practice already are.</p>
+
+      <h2>What Comes Next</h2>
+      <p>Enforcement is still uneven across member states, and plenty of smaller companies are still catching up. But the direction of travel is hard to miss: a regulation aimed at a specific set of needs has ended up nudging an entire region's product culture toward building for the full range of how people actually use things — distracted, one-handed, in bright sunlight, in a second language, or simply in a hurry.</p>
+
+      <p>Below is a look at how one European video platform approached the requirement — not as a separate "accessible mode," but as the standard playback experience.</p>
+    </div>
+  </article>
+
+  <aside class="sidebar">
+    <div class="sidebar-card author-card">
+      <div class="author-avatar-lg">E.N.</div>
+      <div class="author-info">
+        <strong>Elena Novak</strong>
+        <p>Covers digital policy and product design across the EU. Based in Brussels.</p>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <h3>More From Europe</h3>
+      <div class="story-item">
+        <div><div class="s-title">Why Dutch Banks Redesigned Their Apps a Year Early</div><div class="s-meta">Netherlands &middot; 6 min read</div></div>
+      </div>
+      <div class="story-item">
+        <div><div class="s-title">Inside the EU's Push for a Single Digital Market</div><div class="s-meta">Policy &middot; 8 min read</div></div>
+      </div>
+      <div class="story-item">
+        <div><div class="s-title">The Startups Building "Accessible by Default"</div><div class="s-meta">Innovation &middot; 5 min read</div></div>
+      </div>
+      <div class="story-item">
+        <div><div class="s-title">How Nordic Cities Are Rethinking Public Transit Apps</div><div class="s-meta">Nordics &middot; 7 min read</div></div>
+      </div>
+    </div>
+
+    <div class="sidebar-card newsletter-card">
+      <h3>The Brussels Brief</h3>
+      <p>Weekly dispatches on European tech policy and product design.</p>
+      <input type="email" placeholder="you@example.com" disabled>
+      <button type="button" disabled>Subscribe</button>
+    </div>
+
+    <div class="sidebar-card">
+      <h3>Tags</h3>
+      <div class="tag-list">
+        <span>Accessibility</span>
+        <span>EU Policy</span>
+        <span>Product Design</span>
+        <span>Digital Innovation</span>
+        <span>European Accessibility Act</span>
+      </div>
+    </div>
+  </aside>
+
+</div>
+
+<footer class="site-footer">
+  &copy; 2026 Threshold. A demo publication for testing purposes only.
+</footer>
+
+<script>
+(function () {
+  var PARAM = "embed";
+  var selectEl = document.getElementById("playerSwitcher");
+  var embedContainer = document.getElementById("playerEmbedContainer");
+  var clearHistoryBtn = document.getElementById("clearHistoryBtn");
+  var options = [];
+
+  function loadEmbed(option) {
+    embedContainer.innerHTML = "";
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.async = true;
+    script.src = option.type === "channel"
+      ? "https://showcase.bbvms.com/ch/" + option.channelId + ".js"
+      : "https://showcase.bbvms.com/p/" + option.playout + "/c/" + option.clipId + ".js";
+    embedContainer.appendChild(script);
+  }
+
+  function setUrlSlug(slug) {
+    var url = new URL(window.location.href);
+    url.searchParams.set(PARAM, slug);
+    window.history.replaceState(null, "", url);
+  }
+
+  selectEl.addEventListener("change", function () {
+    var option = options[parseInt(selectEl.value, 10)];
+    setUrlSlug(option.slug);
+    loadEmbed(option);
+  });
+
+  clearHistoryBtn.addEventListener("click", function () {
+    if (!confirm("Clear watched history for this demo?")) return;
+    localStorage.removeItem("bb_play_history");
+    loadEmbed(options[parseInt(selectEl.value, 10)]);
+  });
+
+  fetch("config.json", { cache: "no-store" })
+    .then(function (res) { return res.json(); })
+    .then(function (data) {
+      options = data;
+      options.forEach(function (opt, i) {
+        var o = document.createElement("option");
+        o.value = String(i);
+        o.textContent = opt.title;
+        selectEl.appendChild(o);
+      });
+
+      var requestedSlug = new URL(window.location.href).searchParams.get(PARAM);
+      var index = 0;
+      for (var i = 0; i < options.length; i++) {
+        if (options[i].slug === requestedSlug) { index = i; break; }
+      }
+
+      selectEl.value = String(index);
+      setUrlSlug(options[index].slug);
+      loadEmbed(options[index]);
+    });
+})();
+</script>
+
+</body>
+</html>
