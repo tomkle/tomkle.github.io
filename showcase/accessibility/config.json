@@ -2,7 +2,7 @@
   { "type": "player", "title": "The Accessible Player", "slug": "accessible-player", "playout": "a11y", "clipId": "7384971" },
   { "type": "player", "title": "Subtitles", "slug": "subtitles", "playout": "a11y", "clipId": "7390055" },
   { "type": "player", "title": "Audio description", "slug": "audio-description", "playout": "a11y", "clipId": "7390054" },
-  { "type": "player", "title": "Transcript (in player)", "slug": "transcript-in-player", "playout": "a11y", "clipId": "7390056" },
-  { "type": "player", "title": "Transcript (below player)", "slug": "transcript-below-player", "playout": "a11y", "clipId": "7390056" },
+  { "type": "player", "title": "Transcript (in player)", "slug": "transcript-in-player", "playout": "a11y_in_", "clipId": "7390056" },
+  { "type": "player", "title": "Transcript (below player)", "slug": "transcript-below-player", "playout": "a11y_below_", "clipId": "7390056" },
   { "type": "player", "title": "Sign language", "slug": "sign-language", "playout": "a11y", "clipId": "7390061" }
 ]
