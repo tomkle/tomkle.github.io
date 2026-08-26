@@ -1,5 +1,5 @@
 [
-  { "type": "player", "title": "Basic player", "slug": "basic-player", "playout": "default", "clipId": "7373243" },
-  { "type": "player", "title": "Chapters", "slug": "chapters", "playout": "default", "clipId": "7390258" },
-  { "type": "channel", "title": "Mini Channel", "slug": "mini-channel", "channelId": "1432" }
+  { "type": "player", "title": "Basic player", "slug": "basic-player", "playout": "default", "clipId": "7373243", "description": "description here" },
+  { "type": "player", "title": "Chapters", "slug": "chapters", "playout": "default", "clipId": "7390258", "description": "description here" },
+  { "type": "channel", "title": "Mini Channel", "slug": "mini-channel", "channelId": "1432", "description": "description here" }
 ]

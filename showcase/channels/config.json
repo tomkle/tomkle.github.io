@@ -1,12 +1,12 @@
 [
-  { "title": "Baseline", "url": "https://showcase.bbvms.com/ch/1425.js", "slug": "baseline" },
-  { "title": "Thumnail styles", "url": "https://showcase.bbvms.com/ch/1426.js", "slug": "thumbnail-styles" },
-  { "title": "Promotional playlist", "url": "https://showcase.bbvms.com/ch/1427.js", "slug": "promotional-playlist" },
-  { "title": "Watch history", "url": "https://showcase.bbvms.com/ch/1428.js", "slug": "watch-history" },
-  { "title": "Multi page", "url": "https://showcase.bbvms.com/ch/1429.js", "slug": "multi-page"},
-  { "title": "Promotional banners", "url": "https://showcase.bbvms.com/ch/1430.js", "slug": "promotional-banners"},
-  { "title": "Playlist collections", "url": "https://showcase.bbvms.com/ch/1431.js", "slug": "playlist-collections"},
-  { "title": "Content protection", "url": "https://showcase.bbvms.com/ch/1436.js", "slug": "content-protection"},
-  { "title": "Soft embargo", "url": "https://showcase.bbvms.com/ch/1443.js", "slug": "soft-embargo"},
-  { "title": "Font sizes", "url": "https://showcase.bbvms.com/ch/1447.js", "slug": "font-sizes"}
+  { "title": "Baseline", "url": "https://showcase.bbvms.com/ch/1425.js", "slug": "baseline", "description": "description here" },
+  { "title": "Thumnail styles", "url": "https://showcase.bbvms.com/ch/1426.js", "slug": "thumbnail-styles", "description": "description here" },
+  { "title": "Promotional playlist", "url": "https://showcase.bbvms.com/ch/1427.js", "slug": "promotional-playlist", "description": "description here" },
+  { "title": "Watch history", "url": "https://showcase.bbvms.com/ch/1428.js", "slug": "watch-history", "description": "description here" },
+  { "title": "Multi page", "url": "https://showcase.bbvms.com/ch/1429.js", "slug": "multi-page", "description": "description here" },
+  { "title": "Promotional banners", "url": "https://showcase.bbvms.com/ch/1430.js", "slug": "promotional-banners", "description": "description here" },
+  { "title": "Playlist collections", "url": "https://showcase.bbvms.com/ch/1431.js", "slug": "playlist-collections", "description": "description here" },
+  { "title": "Content protection", "url": "https://showcase.bbvms.com/ch/1436.js", "slug": "content-protection", "description": "description here" },
+  { "title": "Soft embargo", "url": "https://showcase.bbvms.com/ch/1443.js", "slug": "soft-embargo", "description": "description here" },
+  { "title": "Font sizes", "url": "https://showcase.bbvms.com/ch/1447.js", "slug": "font-sizes", "description": "description here" }
 ]
