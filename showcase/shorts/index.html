@@ -5,7 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Coral Gardens of the Deep — Wild Current</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<!-- Fonts for the showcase-picker dialog, matching the hub page -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
+  @font-face{
+    font-family:'Gustavo';
+    src:url('../assets/Gustavo-Bold.otf') format('opentype');
+    font-weight:700;
+    font-style:normal;
+    font-display:swap;
+  }
   :root{
     --green-900:#132a1f;
     --green-700:#1f4d36;
@@ -84,7 +95,8 @@
     gap:10px;
     font-family:"Helvetica Neue",Arial,sans-serif;
   }
-  select#shortsSwitcher{
+  button.switcher-trigger{
+    display:inline-flex; align-items:center; gap:8px;
     background-color:var(--green-700);
     color:var(--white);
     border:1px solid rgba(255,255,255,0.25);
@@ -93,16 +105,73 @@
     font-family:"Helvetica Neue",Arial,sans-serif;
     cursor:pointer;
     max-width:220px;
-    appearance:none;
-    -webkit-appearance:none;
-    -moz-appearance:none;
-    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'><path d='M0 0l5 6 5-6z' fill='%23ffffff'/></svg>");
-    background-repeat:no-repeat;
-    background-position:right 10px center;
-    background-size:10px 6px;
-    padding:7px 28px 7px 10px;
+    padding:7px 10px;
   }
-  select#shortsSwitcher:hover{border-color:rgba(255,255,255,0.5);}
+  button.switcher-trigger:hover{border-color:rgba(255,255,255,0.5);}
+  button.switcher-trigger .switcher-label{
+    overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+  }
+  button.switcher-trigger svg{ flex-shrink:0; width:10px; height:6px; }
+
+  /* ---------- Showcase picker dialog ---------- */
+  .picker-overlay{
+    position:fixed; inset:0; z-index:1000;
+    background:rgba(0,0,0,.55);
+    display:none; align-items:center; justify-content:center;
+    padding:20px;
+  }
+  .picker-overlay.open{ display:flex; }
+  .picker-box{
+    width:100%; max-width:520px; max-height:80vh;
+    display:flex; flex-direction:column;
+    overflow:hidden;
+    background:var(--white);
+    border-radius:12px;
+    box-shadow:0 24px 60px -20px rgba(0,0,0,.5);
+  }
+  .picker-head{
+    flex-shrink:0;
+    display:flex; align-items:center; justify-content:space-between;
+    gap:16px; padding:16px 20px;
+    background:var(--green-100);
+    border-bottom:1px solid var(--border);
+  }
+  .picker-head h2{
+    margin:0;
+    font-family:'Gustavo','Lato',-apple-system,BlinkMacSystemFont,sans-serif; font-weight:700;
+    font-size:19px; color:var(--green-900);
+  }
+  .picker-close{
+    flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+    width:30px; height:30px;
+    background:none; border:none; border-radius:8px;
+    color:var(--ink-600); cursor:pointer;
+  }
+  .picker-close:hover, .picker-close:focus-visible{ background:rgba(0,0,0,.06); color:var(--green-900); }
+  .picker-close svg{ width:16px; height:16px; }
+  .picker-list{
+    flex:1 1 auto; min-height:0; overflow-y:auto;
+    display:flex; flex-direction:column; gap:7px;
+    padding:16px 20px;
+  }
+  .picker-item{
+    display:block; width:100%; text-align:left;
+    background:var(--white);
+    border:1px solid var(--border);
+    border-radius:8px;
+    padding:11px 14px;
+    cursor:pointer;
+    font-family:'Lato',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    transition:border-color .15s ease, background .15s ease;
+  }
+  .picker-item:hover, .picker-item:focus-visible, .picker-item.is-active{
+    border-color:var(--green-600);
+    background:rgba(44,107,73,0.08);
+  }
+  .picker-item-title{ font-size:14px; font-weight:700; color:var(--green-900); }
+  .picker-item-desc{ display:block; margin-top:3px; font-size:13px; line-height:1.45; color:var(--ink-600); }
+
   button#clearHistoryBtn{
     background:var(--green-700);
     color:var(--white);
@@ -389,7 +458,10 @@
       <a href="#">About</a>
     </nav>
     <div class="header-tools">
-      <select id="shortsSwitcher" aria-label="Choose which Shorts embed to display"></select>
+      <button type="button" class="switcher-trigger" id="shortsSwitcherBtn" aria-haspopup="dialog">
+        <span class="switcher-label" id="shortsSwitcherLabel">Loading&hellip;</span>
+        <svg viewBox="0 0 10 6" aria-hidden="true"><path d="M0 0l5 6 5-6z" fill="currentColor"/></svg>
+      </button>
       <button type="button" id="clearHistoryBtn" title="Clear watched history" aria-label="Clear watched history"><i class="fa-solid fa-clock-rotate-left"></i></button>
     </div>
   </div>
@@ -545,6 +617,21 @@
   </div>
 </section>
 
+<div class="picker-overlay" id="switcherPicker">
+  <div class="picker-box" role="dialog" aria-modal="true" aria-labelledby="switcherPickerTitle">
+    <div class="picker-head">
+      <h2 id="switcherPickerTitle">Choose a showcase</h2>
+      <button type="button" class="picker-close" id="switcherPickerClose" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M6 6l12 12M18 6L6 18"/>
+        </svg>
+      </button>
+    </div>
+    <div class="picker-list" id="switcherPickerList"></div>
+  </div>
+</div>
+
 <footer class="site-footer">
   &copy; 2026 Wild Current. A demo publication for testing purposes only.
 </footer>
@@ -552,10 +639,15 @@
 <script>
 (function () {
   var PARAM = "embed";
-  var selectEl = document.getElementById("shortsSwitcher");
+  var switcherBtn = document.getElementById("shortsSwitcherBtn");
+  var switcherLabel = document.getElementById("shortsSwitcherLabel");
   var embedContainer = document.getElementById("shortsEmbedContainer");
   var clearHistoryBtn = document.getElementById("clearHistoryBtn");
+  var picker = document.getElementById("switcherPicker");
+  var pickerList = document.getElementById("switcherPickerList");
+  var pickerClose = document.getElementById("switcherPickerClose");
   var options = [];
+  var currentIndex = 0;
 
   function loadEmbed(option) {
     embedContainer.innerHTML = "";
@@ -572,28 +664,71 @@
     window.history.replaceState(null, "", url);
   }
 
-  selectEl.addEventListener("change", function () {
-    var option = options[parseInt(selectEl.value, 10)];
+  function selectOption(index) {
+    currentIndex = index;
+    var option = options[index];
+    switcherLabel.textContent = option.title;
     setUrlSlug(option.slug);
     loadEmbed(option);
+  }
+
+  function renderPickerList() {
+    pickerList.innerHTML = "";
+    options.forEach(function (opt, i) {
+      var item = document.createElement("button");
+      item.type = "button";
+      item.className = "picker-item" + (i === currentIndex ? " is-active" : "");
+
+      var title = document.createElement("span");
+      title.className = "picker-item-title";
+      title.textContent = opt.title;
+      item.appendChild(title);
+
+      if (opt.description) {
+        var desc = document.createElement("span");
+        desc.className = "picker-item-desc";
+        desc.textContent = opt.description;
+        item.appendChild(desc);
+      }
+
+      item.addEventListener("click", function () {
+        selectOption(i);
+        closePicker();
+      });
+      pickerList.appendChild(item);
+    });
+  }
+
+  function openPicker() {
+    renderPickerList();
+    picker.classList.add("open");
+    pickerClose.focus();
+  }
+
+  function closePicker() {
+    picker.classList.remove("open");
+    switcherBtn.focus();
+  }
+
+  switcherBtn.addEventListener("click", openPicker);
+  pickerClose.addEventListener("click", closePicker);
+  picker.addEventListener("click", function (e) {
+    if (e.target === picker) closePicker();
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && picker.classList.contains("open")) closePicker();
   });
 
   clearHistoryBtn.addEventListener("click", function () {
     if (!confirm("Clear watched history for this demo?")) return;
     localStorage.removeItem("bb_play_history");
-    loadEmbed(options[parseInt(selectEl.value, 10)]);
+    loadEmbed(options[currentIndex]);
   });
 
   fetch("config.json", { cache: "no-store" })
     .then(function (res) { return res.json(); })
     .then(function (data) {
       options = data;
-      options.forEach(function (opt, i) {
-        var o = document.createElement("option");
-        o.value = String(i);
-        o.textContent = opt.title;
-        selectEl.appendChild(o);
-      });
 
       var requestedSlug = new URL(window.location.href).searchParams.get(PARAM);
       var index = 0;
@@ -601,9 +736,7 @@
         if (options[i].slug === requestedSlug) { index = i; break; }
       }
 
-      selectEl.value = String(index);
-      setUrlSlug(options[index].slug);
-      loadEmbed(options[index]);
+      selectOption(index);
     });
 })();
 </script>
