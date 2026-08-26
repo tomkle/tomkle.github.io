@@ -208,14 +208,16 @@ main::before{
 .modal-overlay[hidden]{ display:none; }
 .modal-box{
   width:100%; max-width:660px; max-height:85vh;
-  overflow-y:auto;
+  display:flex; flex-direction:column;
+  overflow:hidden;
   background:var(--card);
   border-radius:16px;
   box-shadow:0 24px 60px -20px rgba(0,40,55,.5);
 }
 .modal-head{
+  flex-shrink:0;
   display:flex; align-items:center; justify-content:space-between;
-  gap:16px; padding:20px;
+  gap:16px; padding:15px 20px;
   background:var(--page);
   border-bottom:1px solid var(--line);
 }
@@ -235,7 +237,10 @@ main::before{
 .modal-close:hover, .modal-close:focus-visible{ background:var(--page); color:var(--navy); }
 .modal-close svg{ width:18px; height:18px; }
 
-.modal-list{ display:flex; flex-direction:column; gap:10px; padding:20px; }
+.modal-list{
+  flex:1 1 auto; min-height:0; overflow-y:auto;
+  display:flex; flex-direction:column; gap:7px; padding:20px;
+}
 .modal-item{
   display:block; width:100%; text-align:left;
   background:var(--card);
