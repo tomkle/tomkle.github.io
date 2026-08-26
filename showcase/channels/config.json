@@ -1,12 +1,12 @@
 [
-  { "title": "Baseline", "url": "https://showcase.bbvms.com/ch/1425.js", "slug": "baseline", "description": "description here" },
-  { "title": "Thumnail styles", "url": "https://showcase.bbvms.com/ch/1426.js", "slug": "thumbnail-styles", "description": "description here" },
-  { "title": "Promotional playlist", "url": "https://showcase.bbvms.com/ch/1427.js", "slug": "promotional-playlist", "description": "description here" },
-  { "title": "Watch history", "url": "https://showcase.bbvms.com/ch/1428.js", "slug": "watch-history", "description": "description here" },
-  { "title": "Multi page", "url": "https://showcase.bbvms.com/ch/1429.js", "slug": "multi-page", "description": "description here" },
-  { "title": "Promotional banners", "url": "https://showcase.bbvms.com/ch/1430.js", "slug": "promotional-banners", "description": "description here" },
-  { "title": "Playlist collections", "url": "https://showcase.bbvms.com/ch/1431.js", "slug": "playlist-collections", "description": "description here" },
-  { "title": "Content protection", "url": "https://showcase.bbvms.com/ch/1436.js", "slug": "content-protection", "description": "description here" },
-  { "title": "Soft embargo", "url": "https://showcase.bbvms.com/ch/1443.js", "slug": "soft-embargo", "description": "description here" },
-  { "title": "Font sizes", "url": "https://showcase.bbvms.com/ch/1447.js", "slug": "font-sizes", "description": "description here" }
+  { "title": "Baseline", "url": "https://showcase.bbvms.com/ch/1425.js", "slug": "baseline", "description": "A Channel containing multiple different configuration and customization options." },
+  { "title": "Thumnail styles", "url": "https://showcase.bbvms.com/ch/1426.js", "slug": "thumbnail-styles", "description": "An overview of all the different thumbnail styling options." },
+  { "title": "Promotional playlist", "url": "https://showcase.bbvms.com/ch/1427.js", "slug": "promotional-playlist", "description": "Highlight or brand a specific playlist by configuring its look and feel." },
+  { "title": "Watch history", "url": "https://showcase.bbvms.com/ch/1428.js", "slug": "watch-history", "description": "Keep track of watched items and allow visitors to continue watching upon returning to the Channel." },
+  { "title": "Multi page", "url": "https://showcase.bbvms.com/ch/1429.js", "slug": "multi-page", "description": "Group multiple Channels into a single embeddable Channel including navigation." },
+  { "title": "Promotional banners", "url": "https://showcase.bbvms.com/ch/1430.js", "slug": "promotional-banners", "description": "Promote product and services directly from within a Channel." },
+  { "title": "Playlist collections", "url": "https://showcase.bbvms.com/ch/1431.js", "slug": "playlist-collections", "description": "Group related content into a multi-layered Playlist. Ideal for recurring programs." },
+  { "title": "Content protection", "url": "https://showcase.bbvms.com/ch/1436.js", "slug": "content-protection", "description": "Control access to your content using content protection based on country, embedding domain or behind a login." },
+  { "title": "Soft embargo", "url": "https://showcase.bbvms.com/ch/1443.js", "slug": "soft-embargo", "description": "Show a countdown to upcoming live streams or announcements within a Channel." },
+  { "title": "Font sizes", "url": "https://showcase.bbvms.com/ch/1447.js", "slug": "font-sizes", "description": "Customize the sizes of Fonts within a Channel to ensure accessibility of the Channel." }
 ]
