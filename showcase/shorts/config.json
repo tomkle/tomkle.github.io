@@ -1,9 +1,9 @@
 [
-  { "label": "Basic (Horizontal)", "url": "https://showcase.bbvms.com/sh/311.js?displayFormat=list", "slug": "basic-horizontal" },
-  { "label": "Basic (Vertical)", "url": "https://showcase.bbvms.com/sh/312.js?displayFormat=list", "slug": "basic-vertical" },
-  { "label": "Shelf styling", "url": "https://showcase.bbvms.com/sh/313.js?displayFormat=list", "slug": "shelf-styling" },
-  { "label": "Watched (Mark & Remove)", "url": "https://showcase.bbvms.com/sh/314.js?displayFormat=list", "slug": "track-watched-clips" },
-  { "label": "Animated thumbnail(s)", "url": "https://showcase.bbvms.com/sh/316.js?displayFormat=list", "slug": "animated-thumbnails" },
-  { "label": "Monetization", "url": "https://showcase.bbvms.com/sh/319.js?displayFormat=list", "slug": "monetization" },
-  { "label": "Call to Action", "url": "https://showcase.bbvms.com/sh/320.js?displayFormat=list", "slug": "cta" }
+  { "title": "Basic (Horizontal)", "url": "https://showcase.bbvms.com/sh/311.js?displayFormat=list", "slug": "basic-horizontal" },
+  { "title": "Basic (Vertical)", "url": "https://showcase.bbvms.com/sh/312.js?displayFormat=list", "slug": "basic-vertical" },
+  { "title": "Shelf styling", "url": "https://showcase.bbvms.com/sh/313.js?displayFormat=list", "slug": "shelf-styling" },
+  { "title": "Watched (Mark & Remove)", "url": "https://showcase.bbvms.com/sh/314.js?displayFormat=list", "slug": "track-watched-clips" },
+  { "title": "Animated thumbnail(s)", "url": "https://showcase.bbvms.com/sh/316.js?displayFormat=list", "slug": "animated-thumbnails" },
+  { "title": "Monetization", "url": "https://showcase.bbvms.com/sh/319.js?displayFormat=list", "slug": "monetization" },
+  { "title": "Call to Action", "url": "https://showcase.bbvms.com/sh/320.js?displayFormat=list", "slug": "cta" }
 ]

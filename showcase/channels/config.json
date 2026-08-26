@@ -1,12 +1,12 @@
 [
-  { "label": "Baseline", "url": "https://showcase.bbvms.com/ch/1425.js", "slug": "baseline" },
-  { "label": "Thumnail styles", "url": "https://showcase.bbvms.com/ch/1426.js", "slug": "thumbnail-styles" },
-  { "label": "Promotional playlist", "url": "https://showcase.bbvms.com/ch/1427.js", "slug": "promotional-playlist" },
-  { "label": "Watch history", "url": "https://showcase.bbvms.com/ch/1428.js", "slug": "watch-history" },
-  { "label": "Multi page", "url": "https://showcase.bbvms.com/ch/1429.js", "slug": "multi-page"},
-  { "label": "Promotional banners", "url": "https://showcase.bbvms.com/ch/1430.js", "slug": "promotional-banners"},
-  { "label": "Playlist collections", "url": "https://showcase.bbvms.com/ch/1431.js", "slug": "playlist-collections"},
-  { "label": "Content protection", "url": "https://showcase.bbvms.com/ch/1436.js", "slug": "content-protection"},
-  { "label": "Soft embargo", "url": "https://showcase.bbvms.com/ch/1443.js", "slug": "soft-embargo"},
-  { "label": "Font sizes", "url": "https://showcase.bbvms.com/ch/1447.js", "slug": "font-sizes"}
+  { "title": "Baseline", "url": "https://showcase.bbvms.com/ch/1425.js", "slug": "baseline" },
+  { "title": "Thumnail styles", "url": "https://showcase.bbvms.com/ch/1426.js", "slug": "thumbnail-styles" },
+  { "title": "Promotional playlist", "url": "https://showcase.bbvms.com/ch/1427.js", "slug": "promotional-playlist" },
+  { "title": "Watch history", "url": "https://showcase.bbvms.com/ch/1428.js", "slug": "watch-history" },
+  { "title": "Multi page", "url": "https://showcase.bbvms.com/ch/1429.js", "slug": "multi-page"},
+  { "title": "Promotional banners", "url": "https://showcase.bbvms.com/ch/1430.js", "slug": "promotional-banners"},
+  { "title": "Playlist collections", "url": "https://showcase.bbvms.com/ch/1431.js", "slug": "playlist-collections"},
+  { "title": "Content protection", "url": "https://showcase.bbvms.com/ch/1436.js", "slug": "content-protection"},
+  { "title": "Soft embargo", "url": "https://showcase.bbvms.com/ch/1443.js", "slug": "soft-embargo"},
+  { "title": "Font sizes", "url": "https://showcase.bbvms.com/ch/1447.js", "slug": "font-sizes"}
 ]
