@@ -13,7 +13,9 @@
 <style>
 /* ============================================================
    BLUE BILLYWIG — SHOWCASE
-   Single file, no build step, no JavaScript.
+   Single file, no build step. A small script drives the "View
+   showcases" dialog (fetches each category's config.json); nothing
+   else on the page depends on JavaScript.
    Image slots are marked ">>> VISUAL <<<".
 
    Follows the trade-show banner: logo and headline hard left, a
@@ -129,12 +131,11 @@ main::before{
 
 .card{
   display:flex; flex-direction:column;
-  color:var(--text);            /* the card is a link — don't inherit UA link blue */
+  color:var(--text);
   background:var(--card);
   border:1px solid var(--line);
   border-radius:14px;
   padding:10px;
-  text-decoration:none;
   box-shadow:0 6px 22px -12px rgba(0,40,55,.35);
   transition:box-shadow .22s ease, transform .22s ease;
 }
@@ -174,12 +175,16 @@ main::before{
   font-family:var(--font-display); font-weight:700;
   font-size:19px; letter-spacing:-.015em; color:var(--navy);
 }
+.card h2 a{ color:inherit; text-decoration:none; }
+.card h2 a:hover, .card h2 a:focus-visible{ text-decoration:underline; }
 
 .card p{ margin:0 0 clamp(14px, 2.2vh, 24px); font-size:14.5px; line-height:1.5; flex:1; }
 
 .card-link{
   display:inline-flex; align-items:center; gap:8px;
   font-size:13px; font-weight:600; color:var(--blue-ink);
+  background:none; border:none; padding:0; margin:0;
+  font-family:var(--font-text); cursor:pointer;
 }
 .card-link svg{ width:15px; height:15px; transition:transform .2s ease; }
 .card:hover .card-link svg{ transform:translateX(3px); }
@@ -192,6 +197,61 @@ main::before{
 .card--soon p{ opacity:.6; }
 
 .card-note{ font-size:13px; font-weight:600; color:var(--muted); }
+
+/* ---------- Showcase picker dialog ---------- */
+.modal-overlay{
+  position:fixed; inset:0; z-index:1000;
+  background:rgba(0,40,55,.55);
+  display:flex; align-items:center; justify-content:center;
+  padding:24px;
+}
+.modal-overlay[hidden]{ display:none; }
+.modal-box{
+  width:100%; max-width:660px; max-height:85vh;
+  overflow-y:auto;
+  background:var(--card);
+  border-radius:16px;
+  padding:28px 30px;
+  box-shadow:0 24px 60px -20px rgba(0,40,55,.5);
+}
+.modal-head{
+  display:flex; align-items:flex-start; justify-content:space-between;
+  gap:16px; margin-bottom:20px;
+}
+.modal-head h2{
+  margin:0;
+  font-family:var(--font-display); font-weight:700;
+  font-size:23px; letter-spacing:-.015em; color:var(--navy);
+}
+.modal-close{
+  flex-shrink:0;
+  display:flex; align-items:center; justify-content:center;
+  width:32px; height:32px;
+  background:none; border:none; border-radius:8px;
+  color:var(--muted); cursor:pointer;
+  transition:background .15s ease, color .15s ease;
+}
+.modal-close:hover, .modal-close:focus-visible{ background:var(--page); color:var(--navy); }
+.modal-close svg{ width:18px; height:18px; }
+
+.modal-list{ display:flex; flex-direction:column; gap:10px; }
+.modal-item{
+  display:block; width:100%; text-align:left;
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:13px 16px;
+  cursor:pointer;
+  font-family:var(--font-text);
+  transition:border-color .15s ease, background .15s ease;
+}
+.modal-item:hover, .modal-item:focus-visible{
+  border-color:var(--blue);
+  background:rgba(100,155,210,.08);
+}
+.modal-item-title{ font-size:15px; font-weight:700; color:var(--navy); }
+.modal-item-desc{ display:block; margin-top:3px; font-size:13.5px; line-height:1.45; color:var(--muted); }
+.modal-empty{ font-size:14px; color:var(--muted); }
 
 /* ---------- Footer ----------
    Amber rule across the petrol field, as on the banner. */
@@ -283,92 +343,92 @@ main::before{
       <div class="cards">
 
         <!-- ---------- PLAYER ---------- -->
-        <a class="card" href="player/?embed=basic-player">
+        <div class="card">
           <figure class="card-figure">
             <img class="card-img" src="assets/player.webp"
                  alt="The Blue Billywig player running a video with captions and full controls, on a laptop">
           </figure>
           <div class="card-body">
-            <h2>Player</h2>
+            <h2><a href="player/?embed=basic-player">Player</a></h2>
             <p>
               A selection of examples of our video player showcasing the different
               configuration and functional options.
             </p>
-            <span class="card-link">
+            <button type="button" class="card-link" data-showcase-category="player">
               View showcases
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M4 12h15M13 6l6 6-6 6"/>
               </svg>
-            </span>
+            </button>
           </div>
-        </a>
+        </div>
 
         <!-- ---------- CHANNELS ---------- -->
-        <a class="card" href="channels/?embed=baseline">
+        <div class="card">
           <figure class="card-figure">
             <img class="card-img" src="assets/channels.webp" loading="lazy"
                  alt="A branded video portal with a featured item and a row of recent videos, on a laptop">
           </figure>
           <div class="card-body">
-            <h2>Channels</h2>
+            <h2><a href="channels/?embed=baseline">Channels</a></h2>
             <p>
               Video pages and content overviews. Playlists, carousels, categories and
               search, styled to sit inside any brand.
             </p>
-            <span class="card-link">
+            <button type="button" class="card-link" data-showcase-category="channels">
               View showcases
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M4 12h15M13 6l6 6-6 6"/>
               </svg>
-            </span>
+            </button>
           </div>
-        </a>
+        </div>
 
         <!-- ---------- SHORTS ---------- -->
-        <a class="card" href="shorts/?embed=basic-horizontal">
+        <div class="card">
           <figure class="card-figure">
             <img class="card-img" src="assets/shorts.webp" loading="lazy"
                  alt="A vertical Shorts swipe feed, on a laptop">
           </figure>
           <div class="card-body">
-            <h2>Shorts</h2>
+            <h2><a href="shorts/?embed=basic-horizontal">Shorts</a></h2>
             <p>
               Vertical video the way an audience already knows it: swipe feeds, stories
               and snackable clips built for mobile first.
             </p>
-            <span class="card-link">
+            <button type="button" class="card-link" data-showcase-category="shorts">
               View showcases
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M4 12h15M13 6l6 6-6 6"/>
               </svg>
-            </span>
+            </button>
           </div>
-        </a>
+        </div>
 
         <!-- ---------- ACCESSIBILITY ---------- -->
-        <a class="card" href="accessibility/?embed=accessible-player">
+        <div class="card">
           <figure class="card-figure">
             <img class="card-img" src="assets/accessibility.webp" loading="lazy"
                  alt="A player with captions and accessibility controls enabled, on a laptop">
           </figure>
           <div class="card-body">
-            <h2>Accessibility</h2>
+            <h2><a href="accessibility/?embed=accessible-player">Accessibility</a></h2>
             <p>
               Examples of captions, audio description, keyboard navigation and screen
               reader support, all shown working in a live player.
             </p>
-            <span class="card-link">
+            <button type="button" class="card-link" data-showcase-category="accessibility">
               View showcases
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M4 12h15M13 6l6 6-6 6"/>
               </svg>
-            </span>
+            </button>
           </div>
-        </a>
+        </div>
 
       </div>
     </div>
@@ -383,6 +443,99 @@ main::before{
     </div>
   </div>
 </footer>
+
+<!-- ============================ SHOWCASE PICKER DIALOG ============================ -->
+<div class="modal-overlay" id="showcaseModal" hidden>
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="showcaseModalTitle">
+    <div class="modal-head">
+      <h2 id="showcaseModalTitle">Available <span id="showcaseModalCategory"></span> showcases</h2>
+      <button type="button" class="modal-close" id="showcaseModalClose" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M6 6l12 12M18 6L6 18"/>
+        </svg>
+      </button>
+    </div>
+    <div class="modal-list" id="showcaseModalList"></div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var modal = document.getElementById('showcaseModal');
+  var modalCategory = document.getElementById('showcaseModalCategory');
+  var modalList = document.getElementById('showcaseModalList');
+  var closeBtn = document.getElementById('showcaseModalClose');
+  var lastTrigger = null;
+
+  function capitalize(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+
+  function openModal(category, trigger) {
+    lastTrigger = trigger;
+    modalCategory.textContent = capitalize(category);
+    modalList.innerHTML = '<p class="modal-empty">Loading&hellip;</p>';
+    modal.hidden = false;
+    closeBtn.focus();
+
+    fetch(category + '/config.json', { cache: 'no-store' })
+      .then(function (res) { return res.json(); })
+      .then(function (data) { renderList(category, data); })
+      .catch(function () {
+        modalList.innerHTML = '<p class="modal-empty">Couldn’t load showcases for this category.</p>';
+      });
+  }
+
+  function renderList(category, options) {
+    if (!Array.isArray(options) || !options.length) {
+      modalList.innerHTML = '<p class="modal-empty">No showcases available yet.</p>';
+      return;
+    }
+    modalList.innerHTML = '';
+    options.forEach(function (opt) {
+      var title = opt.title || opt.label || opt.slug;
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'modal-item';
+
+      var titleEl = document.createElement('span');
+      titleEl.className = 'modal-item-title';
+      titleEl.textContent = title;
+      btn.appendChild(titleEl);
+
+      if (opt.description) {
+        var descEl = document.createElement('span');
+        descEl.className = 'modal-item-desc';
+        descEl.textContent = opt.description;
+        btn.appendChild(descEl);
+      }
+
+      btn.addEventListener('click', function () {
+        window.location.href = category + '/?embed=' + encodeURIComponent(opt.slug);
+      });
+      modalList.appendChild(btn);
+    });
+  }
+
+  function closeModal() {
+    modal.hidden = true;
+    if (lastTrigger) lastTrigger.focus();
+  }
+
+  document.querySelectorAll('[data-showcase-category]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      openModal(btn.getAttribute('data-showcase-category'), btn);
+    });
+  });
+
+  closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', function (e) {
+    if (e.target === modal) closeModal();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !modal.hidden) closeModal();
+  });
+})();
+</script>
 
 </body>
 </html>
