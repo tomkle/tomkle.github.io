@@ -136,6 +136,7 @@ main::before{
   border:1px solid var(--line);
   border-radius:14px;
   padding:10px;
+  cursor:pointer;
   box-shadow:0 6px 22px -12px rgba(0,40,55,.35);
   transition:box-shadow .22s ease, transform .22s ease;
 }
@@ -454,7 +455,7 @@ main::before{
 <div class="modal-overlay" id="showcaseModal" hidden>
   <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="showcaseModalTitle">
     <div class="modal-head">
-      <h2 id="showcaseModalTitle">Available <span id="showcaseModalCategory"></span> showcases</h2>
+      <h2 id="showcaseModalTitle"><span id="showcaseModalCategory"></span> showcases</h2>
       <button type="button" class="modal-close" id="showcaseModalClose" aria-label="Close">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -530,6 +531,18 @@ main::before{
   document.querySelectorAll('[data-showcase-category]').forEach(function (btn) {
     btn.addEventListener('click', function () {
       openModal(btn.getAttribute('data-showcase-category'), btn);
+    });
+  });
+
+  // The whole card links to the category's default showcase — except
+  // clicks on the title link or the "View showcases" button, which
+  // handle their own behavior (direct link / open the dialog).
+  document.querySelectorAll('.card').forEach(function (card) {
+    var titleLink = card.querySelector('h2 a');
+    if (!titleLink) return;
+    card.addEventListener('click', function (e) {
+      if (e.target.closest('a, button')) return;
+      window.location.href = titleLink.href;
     });
   });
 
