@@ -1,9 +1,0 @@
-[
-  { "title": "Basic (Horizontal)", "url": "https://showcase.bbvms.com/sh/311.js?displayFormat=list", "slug": "basic-horizontal", "description": "A basic Shorts example using horizontal scrolling." },
-  { "title": "Basic (Vertical)", "url": "https://showcase.bbvms.com/sh/312.js?displayFormat=list", "slug": "basic-vertical", "description": "A basic Shorts example using vertical scrolling." },
-  { "title": "Shelf styling", "url": "https://showcase.bbvms.com/sh/313.js?displayFormat=list", "slug": "shelf-styling", "description": "Change the look and feel of the Shorts Shelf to align with the styling of your website." },
-  { "title": "Watched (Mark & Remove)", "url": "https://showcase.bbvms.com/sh/314.js?displayFormat=list", "slug": "track-watched-clips", "description": "Keep track of watched items and update the Shelf to reflect watched items." },
-  { "title": "Animated thumbnail(s)", "url": "https://showcase.bbvms.com/sh/316.js?displayFormat=list", "slug": "animated-thumbnails", "description": "Anitmate the thumbnails within the Shorts Shelf to draw the attention of the visitor." },
-  { "title": "Monetization", "url": "https://showcase.bbvms.com/sh/319.js?displayFormat=list", "slug": "monetization", "description": "Inject advertisements into the Shorts experience to monetize Shorts." },
-  { "title": "Call to Action", "url": "https://showcase.bbvms.com/sh/320.js?displayFormat=list", "slug": "cta", "description": "Link Shorts to relevant articles or pages by adding a Call to Action." }
-]
